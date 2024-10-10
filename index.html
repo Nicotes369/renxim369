@@ -1,73 +1,65 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Renxim (RXM) — The Coolest Quantum Meme on QL1 Ecosystem</title>
-    
-    <!-- Meta Tags for SEO -->
-    <meta name="description" content="Renxim (RXM) is a cutting-edge meme coin inspired by Quantum Physics and Theory, set to revolutionize the QL1 ecosystem. Join our community-driven project today!">
-    <meta name="keywords" content="Renxim, RXM, Quantum Meme, QL1 Ecosystem, Cryptocurrency, Meme Coin, Quantum Physics, Community Driven">
-    <meta property="og:title" content="Renxim (RXM) — The Coolest Quantum Meme on QL1 Ecosystem">
-    <meta property="og:description" content="Join Renxim (RXM), a cutting-edge meme coin inspired by Quantum Physics and Theory, driving innovation within the QL1 ecosystem.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.renxim.com">
-    <meta property="og:image" content="assets/images/logo.png">
-    
-    <!-- Fonts and Stylesheets -->
+    <title data-i18n="catchphrase">Renxim (RXM) — The Coolest Quantum Meme on QL1 Ecosystem</title>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Font Awesome for Social Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Binary Rain Stylesheet -->
+    <link rel="stylesheet" href="assets/css/binary.css">
+    <!-- Accessibility Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self';">
-
-    <script>
-        // HTTPS Enforcement
-        if (location.protocol !== 'https:') {
-            location.replace(`https:${location.href.substring(location.protocol.length)}`);
-        }
-    </script>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:;">
 </head>
 <body>
-    <!-- Language Selection with ARIA Labels -->
+    <!-- Language Selection -->
     <div class="language-selector" aria-label="Language Selector">
-        <label for="language-select" class="visually-hidden">Select Language</label>
-        <select id="language-select" aria-required="true">
+        <label for="language-select" class="sr-only">Select Language</label>
+        <select id="language-select" aria-labelledby="language-select">
             <option value="en">🇬🇧/🇺🇸(English)</option>
             <option value="ja">🇯🇵(日本語)</option>
             <option value="zh">🇨🇳(中文)</option>
-            <option value="hi">🇮🇳(Hindi)</option>
-            <option value="fa">🇮🇷(Persian)</option>
-            <option value="ar">🇸🇦(Arabic)</option>
-            <option value="he">🇮🇱(Hebrew)</option>
-            <option value="ru">🇷🇺(Russian)</option>
-            <option value="de">🇩🇪(German)</option>
-            <option value="it">🇮🇹(Italian)</option>
-            <option value="es">🇪🇸(Spanish)</option>
-            <option value="ko">🇰🇷(Korean)</option>
+            <option value="hi">🇮🇳(हिंदी)</option>
+            <option value="fa">🇮🇷(فارسی)</option>
+            <option value="ar">🇸🇦(العربية)</option>
+            <option value="he">🇮🇱(עברית)</option>
+            <option value="ru">🇷🇺(Русский)</option>
+            <option value="de">🇩🇪(Deutsch)</option>
+            <option value="it">🇮🇹(Italiano)</option>
+            <option value="es">🇪🇸(Español)</option>
+            <option value="ko">🇰🇷(한국어)</option>
             <option value="qc">💻(Quantum Computer)</option>
         </select>
     </div>
+
+    <!-- Binary Rain and QC Text Rain Containers -->
+    <div class="binary-rain" aria-hidden="true"></div>
+    <div class="qc-text-rain" aria-hidden="true"></div>
 
     <!-- Main Content -->
     <div id="main-content">
         <!-- Header Section -->
         <header>
             <div class="header-content">
-                <img src="assets/images/logo.png" alt="Renxim Logo" class="logo" />
+                <img src="assets/images/logo.png" alt="Renxim Logo" class="logo">
                 <h1 data-i18n="catchphrase">Renxim (RXM) — The Coolest Quantum Meme on QL1 Ecosystem</h1>
-                <p data-i18n="welcome-message">"As the observer, you determine the future of Renxim — let's collapse the wave function!"</p>
+                <p data-i18n="welcome-message">As the observer, you determine the future of Renxim — let's collapse the wave function!</p>
                 <!-- Contract Address -->
-                <div class="contract-address" aria-label="Contract Address">
+                <div class="contract-address">
                     <span id="contract-address" data-i18n="contract-address">Contract Address: 0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4</span>
-                    <button onclick="copyAddress()" class="copy-icon" aria-label="Copy Contract Address">Copy</button>
+                    <button onclick="copyAddress()" class="copy-button" aria-label="Copy Address">Copy</button>
                 </div>
                 <!-- Social Icons -->
-                <div class="social-icons" aria-label="Social Media Links">
+                <div class="social-icons">
                     <a href="https://t.me/renximQL1" target="_blank" class="social-icon-link" aria-label="Telegram">
                         <i class="fab fa-telegram"></i>
                     </a>
-                    <a href="https://x.com/renxim666?s=21&t=Q_73za-RhI-hCOoflHh_gg" target="_blank" class="social-icon-link" aria-label="X (formerly Twitter)">
+                    <a href="https://x.com/renxim666?s=21&t=Q_73za-RhI-hCOoflHh_gg" target="_blank" class="social-icon-link" aria-label="X">
                         <span class="x-logo fallback-font">&#x1d54f;</span>
                     </a>
                 </div>
@@ -75,15 +67,15 @@
         </header>
 
         <!-- About Section -->
-        <section id="about">
-            <h2 data-i18n="about-heading">About Renxim (RXM)</h2>
+        <section id="about" aria-labelledby="about-heading">
+            <h2 id="about-heading" data-i18n="about-heading">About Renxim (RXM)</h2>
             <p data-i18n="about-description">Renxim (RXM) is a cutting-edge meme coin developed by two experts, Ren and Xim, projecting Quantum Physics and Quantum Theory. Operated by the community, it stands out as the coolest entity in the QL1 ecosystem.</p>
-            <blockquote data-i18n="about-quote">"Renxim exists like Schrödinger's cat, intertwined with the fine quantum vibrations and cosmic rhythms, representing infinite possibilities. Your participation as a new observer collapses this wave function, creating a new wave of radiant and abundant future reality."</blockquote>
+            <blockquote data-i18n="about-quote">"Renxim exists like Schrödinger's cat, intertwined with subtle quantum vibrations and cosmic rhythms, representing infinite possibilities. Your participation as a new observer collapses this wave function, creating a new wave of radiant and abundant future reality."</blockquote>
         </section>
 
         <!-- Timeline Section -->
-        <section id="timeline">
-            <h2 data-i18n="timeline-heading">Timeline and Coincidence</h2>
+        <section id="timeline" aria-labelledby="timeline-heading">
+            <h2 id="timeline-heading" data-i18n="timeline-heading">Timeline and Coincidences</h2>
             <p><strong data-i18n="key-message-label">Key Message:</strong> <span data-i18n="key-message">Q17 O17 R17</span></p>
             <p data-i18n="timeline-question">Do you really think this is just a coincidence?</p>
             <ul>
@@ -93,26 +85,26 @@
                 <li><strong>September 17:</strong> Renxim (RXM)</li>
             </ul>
             <!-- Timeline Infographic Image -->
-            <img src="assets/images/timeline-infographic.png" alt="Quantum Coincidence Timeline" />
+            <img src="assets/images/timeline-infographic.png" alt="Quantum Coincidence Timeline" class="responsive-image">
         </section>
 
         <!-- Community Section -->
-        <section id="community">
-            <h2 data-i18n="community-heading">Community</h2>
+        <section id="community" aria-labelledby="community-heading">
+            <h2 id="community-heading" data-i18n="community-heading">Community</h2>
             <p data-i18n="community-message">Join us in quantum entanglement and shape the future of RXM together!</p>
-            <div class="social-icons" aria-label="Social Media Links">
+            <div class="social-icons">
                 <a href="https://t.me/renximQL1" target="_blank" class="social-icon-link" aria-label="Telegram">
                     <i class="fab fa-telegram"></i>
                 </a>
-                <a href="https://x.com/renxim666?s=21&t=Q_73za-RhI-hCOoflHh_gg" target="_blank" class="social-icon-link" aria-label="X (formerly Twitter)">
+                <a href="https://x.com/renxim666?s=21&t=Q_73za-RhI-hCOoflHh_gg" target="_blank" class="social-icon-link" aria-label="X">
                     <span class="x-logo fallback-font">&#x1d54f;</span>
                 </a>
             </div>
         </section>
 
         <!-- FAQ Section -->
-        <section id="faq">
-            <h2 data-i18n="faq-heading">FAQ</h2>
+        <section id="faq" aria-labelledby="faq-heading">
+            <h2 id="faq-heading" data-i18n="faq-heading">FAQ</h2>
             <div class="faq-item">
                 <h3 data-i18n="faq-q1">Q1: How can I purchase Renxim (RXM)?</h3>
                 <p data-i18n="faq-a1">A1: In the quantum world, you as the observer create reality. This means that if you desire, Renxim (RXM) simultaneously exists on all major crypto exchanges. However, until the wave function collapses, possibilities are infinite. Currently, you can connect your wallet to QomSwap and purchase directly using the contract address above.</p>
@@ -120,6 +112,8 @@
             </div>
             <div class="faq-item">
                 <h3 data-i18n="faq-q2">Q2: When will RXM moon?</h3>
+
+```html
                 <p data-i18n="faq-a2">A2: From a quantum perspective, RXM already exists on the moon, Mars, and in other galaxies. It all depends on whether you observe and participate!</p>
             </div>
             <div class="faq-item">
@@ -131,11 +125,11 @@
         <!-- Footer -->
         <footer>
             <div class="footer-content">
-                <div class="social-icons" aria-label="Social Media Links">
+                <div class="social-icons">
                     <a href="https://t.me/renximQL1" target="_blank" class="social-icon-link" aria-label="Telegram">
                         <i class="fab fa-telegram"></i>
                     </a>
-                    <a href="https://x.com/renxim666?s=21&t=Q_73za-RhI-hCOoflHh_gg" target="_blank" class="social-icon-link" aria-label="X (formerly Twitter)">
+                    <a href="https://x.com/renxim666?s=21&t=Q_73za-RhI-hCOoflHh_gg" target="_blank" class="social-icon-link" aria-label="X">
                         <span class="x-logo fallback-font">&#x1d54f;</span>
                     </a>
                 </div>
@@ -146,8 +140,8 @@
     </div>
 
     <!-- Scripts -->
-    <script src="assets/js/main.js" async></script>
-    <script src="assets/js/language.js" async></script>
-    <script src="assets/js/binary.js" async></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/binary.js"></script>
+    <script src="assets/js/language.js"></script>
 </body>
 </html>
