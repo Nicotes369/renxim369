@@ -95,6 +95,7 @@ languageSelect.addEventListener('change', function() {
                 window.stopBinaryEffect();
             }
         }
+        
         // Show main content
         document.getElementById('main-content').style.display = 'block';
         // Remove qc-content if exists
