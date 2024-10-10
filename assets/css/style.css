@@ -1,17 +1,30 @@
 /* assets/css/style.css */
 
+/* Import Custom Font */
+@font-face {
+    font-family: 'Orbitron';
+    src: url('../fonts/Orbitron-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* General Styles */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Orbitron', 'Noto Sans', 'Arial Unicode MS', sans-serif;
-    background-color: #04040c;
+    background-color: #000000;
     color: #4285f4;
+    overflow: hidden;
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-.fallback-font {
-    font-family: 'Courier New', monospace;
+#main-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 /* Language Selector */
@@ -19,14 +32,10 @@ body {
     position: fixed;
     top: 10px;
     right: 10px;
-    z-index: 100;
+    z-index: 3;
 }
 
-.language-selector label {
-    display: none; /* Hide label for screen readers only */
-}
-
-.language-selector select {
+#language-select {
     padding: 8px 12px;
     font-size: 16px;
     background-color: #ffffff;
@@ -37,9 +46,8 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.language-selector select:hover,
-.language-selector select:focus {
-    background-color: #f0f0f0;
+#language-select:hover {
+    background-color: #e6e6e6;
 }
 
 /* Header Styles */
@@ -49,8 +57,9 @@ header {
     align-items: center;
     justify-content: center;
     padding: 100px 20px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     animation: fadeIn 2s ease-in;
+    border-bottom: 2px solid #1e90ff;
 }
 
 .logo {
@@ -80,24 +89,26 @@ header {
     justify-content: center;
     font-size: 18px;
     margin-bottom: 20px;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.8);
     padding: 15px;
     border-radius: 8px;
     color: #ffffff;
-    box-shadow: 0px 0px 15px rgba(30, 144, 255, 0.8);
-    transition: transform 0.3s ease;
+    box-shadow: 0px 0px 20px rgba(30, 144, 255, 0.8);
+    transition: transform 0.3s ease, background-color 0.3s ease;
     font-weight: bold;
 }
 
 .contract-address:hover {
     transform: scale(1.05);
+    background-color: rgba(30, 144, 255, 0.6);
 }
 
 .contract-address span {
     margin-right: 10px;
+    color: #ffffff;
 }
 
-.contract-address button.copy-button {
+.contract-address button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
@@ -108,14 +119,9 @@ header {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.contract-address button.copy-button:hover {
+.contract-address button:hover {
     background-color: #63b8ff;
     transform: scale(1.1);
-}
-
-.contract-address button.copy-button:active {
-    background-color: #4682b4;
-    transform: scale(0.95);
 }
 
 /* Social Icons */
@@ -130,7 +136,7 @@ header {
     color: #ffffff;
     margin: 0 10px;
     text-decoration: none;
-    font-size: 1.8rem;
+    font-size: 2rem;
     transition: color 0.3s, transform 0.3s;
 }
 
@@ -142,7 +148,7 @@ header {
 /* Section Styles */
 section {
     padding: 60px 20px;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.85);
     margin-bottom: 40px;
     border-radius: 10px;
     animation: slideUp 1.5s ease-out;
@@ -156,27 +162,13 @@ section h2 {
     color: #63b8ff;
 }
 
-section p,
-section ul {
+section p, section ul {
     font-size: 18px;
     line-height: 1.6;
     max-width: 800px;
     margin: 0 auto 20px auto;
 }
 
-.responsive-image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(30, 144, 255, 0.5);
-    transition: transform 0.3s ease;
-}
-
-.responsive-image:hover {
-    transform: scale(1.05);
-}
-
-/* Blockquote Styles */
 blockquote {
     font-size: 24px;
     font-style: italic;
@@ -184,7 +176,16 @@ blockquote {
     margin: 40px auto;
     max-width: 800px;
     color: #ffdd57;
-    text-shadow: 0px 0px 10px rgba(255, 221, 87, 0.8);
+}
+
+/* Timeline Image */
+.timeline-image {
+    display: block;
+    margin: 40px auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(30, 144, 255, 0.8);
 }
 
 /* FAQ Styles */
@@ -201,10 +202,8 @@ blockquote {
 
 .faq-item p {
     font-size: 18px;
-    color: #d3d3d3;
 }
 
-/* Buy Button Styles */
 .buy-button {
     display: inline-block;
     padding: 15px 30px;
@@ -214,26 +213,20 @@ blockquote {
     font-size: 18px;
     margin-top: 20px;
     border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .buy-button:hover {
     background-color: #63b8ff;
     transform: scale(1.1);
-    box-shadow: 0px 0px 20px rgba(30, 144, 255, 0.8);
-}
-
-.buy-button:active {
-    background-color: #4682b4;
-    transform: scale(0.95);
 }
 
 /* Footer Styles */
 footer {
     text-align: center;
     padding: 40px 20px;
-    background-color: rgba(0, 0, 0, 0.9);
-    border-top: 2px solid #040488;
+    background-color: rgba(0, 0, 0, 0.95);
+    border-top: 2px solid #1e90ff;
 }
 
 .footer-content {
@@ -244,7 +237,6 @@ footer {
 .footer-content p {
     margin: 10px 0;
     color: #888888;
-    font-size: 16px;
 }
 
 .disclaimer {
@@ -255,7 +247,6 @@ footer {
 .final-message {
     font-size: 16px;
     margin-top: 20px;
-    color: #ffffff;
 }
 
 /* RTL Styles */
@@ -282,33 +273,40 @@ footer {
     margin-left: 0;
 }
 
-/* Focus Styles for Accessibility */
-a:focus,
-button:focus,
-select:focus {
-    outline: 2px dashed #63b8ff;
-    outline-offset: 4px;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .header-content h1 {
         font-size: 32px;
     }
-
+    
     .header-content p {
         font-size: 18px;
     }
-
+    
+    .contract-address {
+        flex-direction: column;
+    }
+    
+    .contract-address span {
+        margin: 0 0 10px 0;
+    }
+    
+    .social-icons a {
+        font-size: 1.5rem;
+    }
+    
     section h2 {
         font-size: 28px;
     }
-
+    
+    section p, section ul {
+        font-size: 16px;
+    }
+    
     .faq-item h3 {
         font-size: 20px;
     }
-
-    .faq-item p,
+    
     .buy-button {
         font-size: 16px;
     }
@@ -321,21 +319,60 @@ select:focus {
 }
 
 @keyframes glow {
-    0% {
-        text-shadow: 0 0 5px #63b8ff, 0 0 10px #63b8ff, 0 0 15px #63b8ff;
-    }
-    100% {
-        text-shadow: 0 0 20px #1e90ff, 0 0 30px #1e90ff, 0 0 40px #1e90ff;
-    }
+    0% { text-shadow: 0 0 5px #63b8ff, 0 0 10px #63b8ff, 0 0 15px #0099cc; }
+    100% { text-shadow: 0 0 20px #1e90ff, 0 0 30px #1e90ff, 0 0 40px #1e90ff; }
 }
 
 @keyframes slideUp {
-    from {
-        transform: translateY(100px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
+    from { transform: translateY(100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Button Click Feedback - Copy Button */
+.contract-address button:active {
+    background-color: #4682b4;
+    transform: scale(0.95);
+}
+
+/* Copy Notification */
+.copy-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(30, 144, 255, 0.9);
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(30, 144, 255, 0.8);
+    animation: fadeInOut 2s ease-in-out;
+    z-index: 4;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Language Change Notification */
+.language-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(30, 144, 255, 0.9);
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(30, 144, 255, 0.8);
+    animation: fadeInOut 2s ease-in-out;
+    z-index: 4;
+}
+
+@media (max-width: 768px) {
+    .language-notification,
+    .copy-notification {
+        right: 10px;
+        left: 10px;
     }
 }
