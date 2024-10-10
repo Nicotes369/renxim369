@@ -1,20 +1,17 @@
-/* General Styles - Optimized */
+/* assets/css/style.css */
+
+/* General Styles */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Orbitron', 'Noto Sans', 'Arial Unicode MS', sans-serif;
-    background: url('../images/background.gif') no-repeat center center fixed;
-    background-size: cover;
+    background-color: #04040c;
     color: #4285f4;
-    direction: ltr;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-#main-content {
-    position: relative;
-    z-index: 1;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+.fallback-font {
+    font-family: 'Courier New', monospace;
 }
 
 /* Language Selector */
@@ -22,10 +19,14 @@ body {
     position: fixed;
     top: 10px;
     right: 10px;
-    z-index: 2;
+    z-index: 100;
 }
 
-#language-select {
+.language-selector label {
+    display: none; /* Hide label for screen readers only */
+}
+
+.language-selector select {
     padding: 8px 12px;
     font-size: 16px;
     background-color: #ffffff;
@@ -33,9 +34,15 @@ body {
     border: 1px solid #cccccc;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Header Styles - Updated */
+.language-selector select:hover,
+.language-selector select:focus {
+    background-color: #f0f0f0;
+}
+
+/* Header Styles */
 header {
     display: flex;
     flex-direction: column;
@@ -66,7 +73,7 @@ header {
     color: #d3d3d3;
 }
 
-/* Contract Address Styles - Improved */
+/* Contract Address Styles */
 .contract-address {
     display: flex;
     align-items: center;
@@ -88,10 +95,9 @@ header {
 
 .contract-address span {
     margin-right: 10px;
-    color: #ffffff;
 }
 
-.contract-address button {
+.contract-address button.copy-button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
@@ -102,17 +108,17 @@ header {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.contract-address button:hover {
+.contract-address button.copy-button:hover {
     background-color: #63b8ff;
     transform: scale(1.1);
 }
 
-.contract-address button:active {
+.contract-address button.copy-button:active {
     background-color: #4682b4;
     transform: scale(0.95);
 }
 
-/* Social Icons - Enhanced */
+/* Social Icons */
 .social-icons {
     display: flex;
     justify-content: center;
@@ -133,7 +139,7 @@ header {
     transform: scale(1.2);
 }
 
-/* Section Styles - Updated */
+/* Section Styles */
 section {
     padding: 60px 20px;
     background-color: rgba(0, 0, 0, 0.8);
@@ -150,13 +156,27 @@ section h2 {
     color: #63b8ff;
 }
 
-section p, section ul {
+section p,
+section ul {
     font-size: 18px;
     line-height: 1.6;
     max-width: 800px;
     margin: 0 auto 20px auto;
 }
 
+.responsive-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(30, 144, 255, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.responsive-image:hover {
+    transform: scale(1.05);
+}
+
+/* Blockquote Styles */
 blockquote {
     font-size: 24px;
     font-style: italic;
@@ -164,9 +184,10 @@ blockquote {
     margin: 40px auto;
     max-width: 800px;
     color: #ffdd57;
+    text-shadow: 0px 0px 10px rgba(255, 221, 87, 0.8);
 }
 
-/* FAQ Styles - Improved */
+/* FAQ Styles */
 .faq-item {
     margin-bottom: 40px;
     animation: fadeIn 1.5s ease-in-out;
@@ -180,8 +201,10 @@ blockquote {
 
 .faq-item p {
     font-size: 18px;
+    color: #d3d3d3;
 }
 
+/* Buy Button Styles */
 .buy-button {
     display: inline-block;
     padding: 15px 30px;
@@ -191,15 +214,21 @@ blockquote {
     font-size: 18px;
     margin-top: 20px;
     border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .buy-button:hover {
     background-color: #63b8ff;
     transform: scale(1.1);
+    box-shadow: 0px 0px 20px rgba(30, 144, 255, 0.8);
 }
 
-/* Footer Styles - Improved */
+.buy-button:active {
+    background-color: #4682b4;
+    transform: scale(0.95);
+}
+
+/* Footer Styles */
 footer {
     text-align: center;
     padding: 40px 20px;
@@ -215,6 +244,7 @@ footer {
 .footer-content p {
     margin: 10px 0;
     color: #888888;
+    font-size: 16px;
 }
 
 .disclaimer {
@@ -225,6 +255,7 @@ footer {
 .final-message {
     font-size: 16px;
     margin-top: 20px;
+    color: #ffffff;
 }
 
 /* RTL Styles */
@@ -251,17 +282,15 @@ footer {
     margin-left: 0;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 1200px) {
-    body {
-        max-width: 100%;
-    }
-
-    #main-content {
-        padding: 0 10px;
-    }
+/* Focus Styles for Accessibility */
+a:focus,
+button:focus,
+select:focus {
+    outline: 2px dashed #63b8ff;
+    outline-offset: 4px;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
     .header-content h1 {
         font-size: 32px;
@@ -271,7 +300,6 @@ footer {
         font-size: 18px;
     }
 
-    /* Adjust font sizes for smaller devices */
     section h2 {
         font-size: 28px;
     }
@@ -280,13 +308,9 @@ footer {
         font-size: 20px;
     }
 
-    .faq-item p, .buy-button {
+    .faq-item p,
+    .buy-button {
         font-size: 16px;
-    }
-
-    /* Hide reflective floor on small devices */
-    body.quantum-mode .binary-background {
-        display: none;
     }
 }
 
@@ -297,23 +321,21 @@ footer {
 }
 
 @keyframes glow {
-    0% { text-shadow: 0 0 5px #00ccff, 0 0 10px #00ccff, 0 0 15px #0099cc; }
-    100% { text-shadow: 0 0 20px #1e90ff, 0 0 30px #1e90ff, 0 0 40px #1e90ff; }
+    0% {
+        text-shadow: 0 0 5px #63b8ff, 0 0 10px #63b8ff, 0 0 15px #63b8ff;
+    }
+    100% {
+        text-shadow: 0 0 20px #1e90ff, 0 0 30px #1e90ff, 0 0 40px #1e90ff;
+    }
 }
 
 @keyframes slideUp {
-    from { transform: translateY(100px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-/* Visually Hidden Class for Accessibility */
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
