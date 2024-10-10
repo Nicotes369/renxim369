@@ -1,0 +1,319 @@
+/* General Styles - Optimized */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Orbitron', 'Noto Sans', 'Arial Unicode MS', sans-serif;
+    background: url('../images/background.gif') no-repeat center center fixed;
+    background-size: cover;
+    color: #4285f4;
+    direction: ltr;
+}
+
+#main-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Language Selector */
+.language-selector {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+}
+
+#language-select {
+    padding: 8px 12px;
+    font-size: 16px;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Header Styles - Updated */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 2s ease-in;
+}
+
+.logo {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.header-content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    animation: glow 1.5s infinite alternate;
+}
+
+.header-content p {
+    font-size: 24px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #d3d3d3;
+}
+
+/* Contract Address Styles - Improved */
+.contract-address {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 8px;
+    color: #ffffff;
+    box-shadow: 0px 0px 15px rgba(30, 144, 255, 0.8);
+    transition: transform 0.3s ease;
+    font-weight: bold;
+}
+
+.contract-address:hover {
+    transform: scale(1.05);
+}
+
+.contract-address span {
+    margin-right: 10px;
+    color: #ffffff;
+}
+
+.contract-address button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #1e90ff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.contract-address button:hover {
+    background-color: #63b8ff;
+    transform: scale(1.1);
+}
+
+.contract-address button:active {
+    background-color: #4682b4;
+    transform: scale(0.95);
+}
+
+/* Social Icons - Enhanced */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    animation: fadeIn 2s ease-in;
+}
+
+.social-icons a {
+    color: #ffffff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1.8rem;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.social-icons a:hover {
+    color: #63b8ff;
+    transform: scale(1.2);
+}
+
+/* Section Styles - Updated */
+section {
+    padding: 60px 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 40px;
+    border-radius: 10px;
+    animation: slideUp 1.5s ease-out;
+}
+
+section h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #63b8ff;
+}
+
+section p, section ul {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+}
+
+blockquote {
+    font-size: 24px;
+    font-style: italic;
+    text-align: center;
+    margin: 40px auto;
+    max-width: 800px;
+    color: #ffdd57;
+}
+
+/* FAQ Styles - Improved */
+.faq-item {
+    margin-bottom: 40px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.faq-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #63b8ff;
+}
+
+.faq-item p {
+    font-size: 18px;
+}
+
+.buy-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #1e90ff;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    margin-top: 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.buy-button:hover {
+    background-color: #63b8ff;
+    transform: scale(1.1);
+}
+
+/* Footer Styles - Improved */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-top: 2px solid #040488;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    margin: 10px 0;
+    color: #888888;
+}
+
+.disclaimer {
+    font-size: 14px;
+    color: #888888;
+}
+
+.final-message {
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+/* RTL Styles */
+[dir="rtl"] .language-selector {
+    right: auto;
+    left: 10px;
+}
+
+[dir="rtl"] header {
+    text-align: center;
+}
+
+[dir="rtl"] .contract-address {
+    justify-content: center;
+    text-align: center;
+}
+
+[dir="rtl"] .social-icons {
+    justify-content: center;
+}
+
+[dir="rtl"] .contract-address span {
+    margin-right: 10px;
+    margin-left: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    body {
+        max-width: 100%;
+    }
+
+    #main-content {
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content h1 {
+        font-size: 32px;
+    }
+
+    .header-content p {
+        font-size: 18px;
+    }
+
+    /* Adjust font sizes for smaller devices */
+    section h2 {
+        font-size: 28px;
+    }
+
+    .faq-item h3 {
+        font-size: 20px;
+    }
+
+    .faq-item p, .buy-button {
+        font-size: 16px;
+    }
+
+    /* Hide reflective floor on small devices */
+    body.quantum-mode .binary-background {
+        display: none;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes glow {
+    0% { text-shadow: 0 0 5px #00ccff, 0 0 10px #00ccff, 0 0 15px #0099cc; }
+    100% { text-shadow: 0 0 20px #1e90ff, 0 0 30px #1e90ff, 0 0 40px #1e90ff; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Visually Hidden Class for Accessibility */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
