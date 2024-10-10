@@ -4,8 +4,9 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Orbitron', 'Noto Sans', 'Arial Unicode MS', sans-serif;
-    background-color: #04040c;
+    font-family: 'Noto Sans', 'Arial', sans-serif;
+    background: url('../images/background.gif') no-repeat center center fixed;
+    background-size: cover;
     color: #ffffff;
     direction: ltr; /* Default direction */
 }
@@ -34,11 +35,6 @@ body {
     border: 1px solid #cccccc;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-#language-select:hover {
-    background-color: #e0e0e0;
 }
 
 /* Header Styles */
@@ -60,60 +56,38 @@ header {
     font-size: 48px;
     margin-bottom: 20px;
     text-align: center;
-    color: #00ccff; /* ネオンブルーに変更 */
-    text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff;
+    /* Neon Glow Effect */
+    color: #00ccff;
+    text-shadow: 0 0 5px #00ccff, 0 0 10px #00ccff, 0 0 15px #0099cc;
 }
 
 .header-content p {
     font-size: 24px;
     margin-bottom: 30px;
     text-align: center;
+    /* Neon Glow Effect */
     color: #ffffff;
-    text-shadow: 0 0 5px #ffffff;
+    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #cccccc;
 }
 
 /* Contract Address Styles - Improved */
-.contract-address-wrapper {
+.contract-address {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    font-size: 18px;
     margin-bottom: 20px;
-}
-
-.contract-label {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #ffffff;
-    text-shadow: 0 0 5px #ffffff;
-}
-
-.contract-box {
-    display: flex;
-    align-items: center;
     background-color: rgba(0, 0, 0, 0.7);
-    padding: 15px 20px;
+    padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 0 20px #00ccff;
-    transition: box-shadow 0.3s;
-}
-
-.contract-box:hover {
-    box-shadow: 0 0 30px #00ccff;
-}
-
-.contract-box span {
-    font-size: 18px;
-    margin-right: 15px;
     color: #ffffff;
-    cursor: pointer;
-    transition: color 0.3s;
 }
 
-.contract-box span:hover {
-    color: #00ccff;
+.contract-address span {
+    margin-right: 10px;
 }
 
-.copy-button {
+.contract-address button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
@@ -121,17 +95,11 @@ header {
     color: #ffffff;
     border: none;
     border-radius: 5px;
-    transition: background-color 0.3s, box-shadow 0.3s;
+    transition: background-color 0.3s ease;
 }
 
-.copy-button:hover {
+.contract-address button:hover {
     background-color: #63b8ff;
-    box-shadow: 0 0 10px #63b8ff;
-}
-
-.copy-button:active {
-    background-color: #1c86ee;
-    box-shadow: 0 0 5px #1c86ee;
 }
 
 /* Social Icons */
@@ -145,13 +113,12 @@ header {
     color: #ffffff;
     margin: 0 10px;
     text-decoration: none;
-    font-size: 2rem;
-    transition: color 0.3s, transform 0.3s;
+    font-size: 1.5rem;
+    transition: color 0.3s;
 }
 
 .social-icons a:hover {
-    color: #00ccff;
-    transform: scale(1.2);
+    color: #4285f4;
 }
 
 /* Section Styles */
@@ -160,15 +127,12 @@ section {
     background-color: rgba(0, 0, 0, 0.8);
     margin-bottom: 40px;
     border-radius: 10px;
-    box-shadow: 0 0 20px #000000;
 }
 
 section h2 {
     font-size: 36px;
     margin-bottom: 30px;
     text-align: center;
-    color: #00ccff;
-    text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff;
 }
 
 section p, section ul {
@@ -176,20 +140,6 @@ section p, section ul {
     line-height: 1.6;
     max-width: 800px;
     margin: 0 auto 20px auto;
-    color: #ffffff;
-    text-shadow: 0 0 5px #ffffff;
-}
-
-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-section ul li {
-    background: url('assets/images/checkmark.png') no-repeat left center;
-    background-size: 20px 20px;
-    padding-left: 30px;
-    margin-bottom: 10px;
 }
 
 blockquote {
@@ -199,7 +149,6 @@ blockquote {
     margin: 40px auto;
     max-width: 800px;
     color: #ffdd57;
-    text-shadow: 0 0 10px #ffdd57, 0 0 20px #ffd700;
 }
 
 /* FAQ Styles */
@@ -210,14 +159,10 @@ blockquote {
 .faq-item h3 {
     font-size: 24px;
     margin-bottom: 10px;
-    color: #00ccff;
-    text-shadow: 0 0 5px #00ccff;
 }
 
 .faq-item p {
     font-size: 18px;
-    color: #ffffff;
-    text-shadow: 0 0 3px #ffffff;
 }
 
 .buy-button {
@@ -229,17 +174,11 @@ blockquote {
     font-size: 18px;
     margin-top: 20px;
     border-radius: 5px;
-    transition: background-color 0.3s, box-shadow 0.3s;
+    transition: background-color 0.3s ease;
 }
 
 .buy-button:hover {
     background-color: #63b8ff;
-    box-shadow: 0 0 10px #63b8ff;
-}
-
-.buy-button:active {
-    background-color: #1c86ee;
-    box-shadow: 0 0 5px #1c86ee;
 }
 
 /* Footer Styles */
@@ -248,8 +187,6 @@ footer {
     padding: 40px 20px;
     background-color: rgba(0, 0, 0, 0.9);
     border-top: 2px solid #040488;
-    color: #ffffff;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .footer-content {
@@ -259,8 +196,6 @@ footer {
 
 .footer-content p {
     margin: 10px 0;
-    font-size: 14px;
-    color: #888888;
 }
 
 .disclaimer {
@@ -271,23 +206,17 @@ footer {
 .final-message {
     font-size: 16px;
     margin-top: 20px;
-    color: #ffffff;
-    text-shadow: 0 0 5px #ffffff;
 }
 
 /* Quantum Computer Mode Styles */
 body.quantum-mode {
     background-color: #000000;
-    color: #ffffff;
+    overflow: hidden;
     direction: ltr; /* Reset direction */
 }
 
 body.quantum-mode #main-content {
-    display: none;
-}
-
-body.quantum-mode #binary-container {
-    display: block;
+    display: none; /* Hide main content */
 }
 
 body.quantum-mode .language-selector {
@@ -300,11 +229,6 @@ body.quantum-mode #language-select {
     border: 1px solid #00ccff;
 }
 
-body.quantum-mode .language-selector select {
-    color: #00ccff;
-    background-color: #000000;
-}
-
 /* RTL Styles */
 [dir="rtl"] .language-selector {
     right: auto;
@@ -315,18 +239,18 @@ body.quantum-mode .language-selector select {
     text-align: center;
 }
 
-[dir="rtl"] .contract-address-wrapper {
+[dir="rtl"] .contract-address {
     justify-content: center;
     text-align: center;
 }
 
-[dir="rtl"] .contract-box {
-    flex-direction: column;
+[dir="rtl"] .social-icons {
+    justify-content: center;
 }
 
-[dir="rtl"] .contract-box span {
-    margin-right: 0;
-    margin-bottom: 10px;
+[dir="rtl"] .contract-address span {
+    margin-right: 10px;
+    margin-left: 0;
 }
 
 /* Responsive Adjustments */
@@ -339,55 +263,10 @@ body.quantum-mode .language-selector select {
         font-size: 18px;
     }
 
-    .social-icons a {
-        font-size: 1.5rem;
+    .social-icons a img {
+        width: 30px;
+        height: 30px;
     }
 
-    .contract-box {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .contract-box span {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-
-    .copy-button {
-        width: 100%;
-        padding: 10px;
-    }
-
-    section h2 {
-        font-size: 28px;
-    }
-
-    section p, section ul {
-        font-size: 16px;
-    }
-
-    blockquote {
-        font-size: 20px;
-    }
-
-    .faq-item h3 {
-        font-size: 20px;
-    }
-
-    .faq-item p {
-        font-size: 16px;
-    }
-
-    .buy-button {
-        font-size: 16px;
-        padding: 10px 20px;
-    }
-
-    .footer-content p {
-        font-size: 12px;
-    }
-
-    .final-message {
-        font-size: 14px;
-    }
+    /* Additional responsive adjustments if needed */
 }
