@@ -1,5 +1,4 @@
 // assets/js/binary.js
-
 // Function to create binary streams
 function startBinaryEffect() {
     const binaryContainer = document.getElementById('binary-container') || document.createElement('div');
@@ -31,7 +30,6 @@ function startBinaryEffect() {
         }, (parseFloat(stream.style.animationDuration) + parseFloat(stream.style.animationDelay)) * 1000);
     };
 
-    
     // ストリームを一定間隔で生成
     const streamInterval = setInterval(createBinaryStream, 500); // 0.5秒ごと
     window.streamInterval = streamInterval;
