@@ -1,12 +1,13 @@
 // assets/js/binary.js
 
-// Binary Rain Effect using Canvas for better performance
+// Binary Rain Effect using Canvas for enhanced performance and visual effects
 (function() {
     let canvas, ctx;
     let columns;
     let drops = [];
-    const fontSize = 16;
+    const baseFontSize = 20; // Increased font size
     const binaryBits = ['0⟩', '1⟩'];
+    const neonWhiteProbability = 0.05; // 5% of bits will have white neon
     let animationId;
 
     // Initialize Canvas
@@ -27,7 +28,7 @@
     function resizeCanvas() {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        columns = Math.floor(canvas.width / fontSize);
+        columns = Math.floor(canvas.width / baseFontSize);
         drops = [];
         for (let x = 0; x < columns; x++) {
             drops[x] = Math.random() * canvas.height;
@@ -43,21 +44,35 @@
 
     // Draw Function
     function draw() {
-        // Black background with opacity for trailing effect
+        // Black background with slight opacity for trailing effect
         ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        // Set neon blue color and font
-        ctx.fillStyle = '#00ccff';
-        ctx.font = `${fontSize}px 'Orbitron', sans-serif`;
+        // Set font properties
+        ctx.font = `${baseFontSize}px 'Orbitron', sans-serif`;
 
         // Draw binary bits
         for (let i = 0; i < drops.length; i++) {
-            const bit = binaryBits[Math.floor(Math.random() * binaryBits.length)];
-            ctx.fillText(bit, i * fontSize, drops[i] * fontSize);
+            // Determine if this bit should be white neon
+            const isWhiteNeon = Math.random() < neonWhiteProbability;
+            if (isWhiteNeon) {
+                ctx.fillStyle = '#ffffff'; // White neon
+                ctx.shadowColor = '#ffffff';
+                ctx.shadowBlur = 20;
+            } else {
+                ctx.fillStyle = '#00ccff'; // Neon Blue
+                ctx.shadowColor = '#00ccff';
+                ctx.shadowBlur = 15;
+            }
 
-            // Reset drop to top after it reaches the bottom
-            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            const bit = binaryBits[Math.floor(Math.random() * binaryBits.length)];
+            ctx.fillText(bit, i * baseFontSize, drops[i] * baseFontSize);
+
+            // Reset shadow for next character
+            ctx.shadowBlur = 0;
+
+            // Reset drop to top after it reaches the bottom with increased delay
+            if (drops[i] * baseFontSize > canvas.height && Math.random() > 0.975) {
                 drops[i] = 0;
             }
 
@@ -65,7 +80,7 @@
         }
     }
 
-    // Animation Loop
+    // Animation Loop with slower speed
     function animate() {
         draw();
         animationId = requestAnimationFrame(animate);
@@ -96,8 +111,10 @@
             if (mutation.attributeName === 'class') {
                 if (document.body.classList.contains('quantum-mode')) {
                     startBinaryRain();
+                    disableScroll();
                 } else {
                     stopBinaryRain();
+                    enableScroll();
                 }
             }
         });
@@ -109,6 +126,17 @@
     document.addEventListener('DOMContentLoaded', () => {
         if (document.body.classList.contains('quantum-mode')) {
             startBinaryRain();
+            disableScroll();
         }
     });
+
+    // Function to disable scroll
+    function disableScroll() {
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Function to enable scroll
+    function enableScroll() {
+        document.body.style.overflow = 'auto';
+    }
 })();
