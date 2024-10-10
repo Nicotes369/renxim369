@@ -149,3 +149,30 @@ footer {
         padding: 8px 16px;
     }
 }
+/* Additional Quantum Computer Mode Styles */
+
+/* Quantum Bits Stream Container */
+.binary-stream {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Binary Text Styles */
+.binary-text {
+    color: #00ccff;
+    font-family: 'Orbitron', 'Noto Sans', 'Arial Unicode MS', sans-serif;
+    text-shadow: 0 0 5px #00ccff, 0 0 10px #00ccff, 0 0 20px #0099cc;
+    margin: 2px 0;
+    opacity: 0.8;
+    transform: translateZ(0);
+    transition: transform 0.3s ease;
+}
+
+/* Hover Effect for Binary Text (Optional) */
+.binary-text:hover {
+    transform: scale(1.2);
+    color: #ffffff;
+    text-shadow: 0 0 10px #ffffff, 0 0 20px #00ccff, 0 0 30px #0099cc;
+}
+
