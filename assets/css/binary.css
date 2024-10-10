@@ -1,120 +1,117 @@
+/* assets/css/binary.css */
+
 /* Quantum Computer Mode Styles - Enhanced */
 body.quantum-mode {
     background-color: #000000;
     color: #ffffff;
+    overflow: hidden;
+    perspective: 1000px;
     direction: ltr;
 }
 
-/* Hide main content in Quantum Computer Mode */
-body.quantum-mode #main-content {
-    display: none;
+/* Binary Rain Container */
+.binary-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    pointer-events: none;
+    overflow: hidden;
 }
 
-/* Language Selector Styling in Quantum Mode */
-body.quantum-mode .language-selector {
-    color: #00bfff;
+/* Binary Stream */
+.binary-rain .binary-stream {
+    position: absolute;
+    top: -200px;
+    width: 1px;
+    height: 200vh;
+    background: transparent;
+    animation: rain 10s linear infinite;
 }
 
-body.quantum-mode #language-select {
-    background-color: #000000;
-    color: #00bfff;
-    border: 1px solid #00bfff;
+/* Binary Text */
+.binary-rain .binary-stream span {
+    display: block;
+    color: #00ffff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: nowrap;
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ccff;
+    opacity: 0.7;
+    transform: rotateX(45deg) translateZ(100px);
 }
 
-/* Binary Flow - Matrix Style Integration */
+/* QC Text Rain Container */
+.qc-text-rain {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 101;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* QC Stream */
+.qc-text-rain .qc-stream {
+    position: absolute;
+    top: -200px;
+    width: 1px;
+    height: 200vh;
+    background: transparent;
+    animation: qc-rain 15s linear infinite;
+}
+
+/* QC Text */
+.qc-text-rain .qc-stream span {
+    display: block;
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    line-height: 1.5;
+    white-space: nowrap;
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00cc00;
+    opacity: 0.8;
+    transform: rotateX(45deg) translateZ(100px);
+}
+
+/* Animations */
+@keyframes rain {
+    0% { transform: translateY(-200px); }
+    100% { transform: translateY(100vh); }
+}
+
+@keyframes qc-rain {
+    0% { transform: translateY(-200px); }
+    100% { transform: translateY(100vh); }
+}
+
+/* Reflective Floor Effect */
 body.quantum-mode::after {
+    content: "";
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: rgba(0, 0, 0, 0.5);
+    transform: scaleY(-1);
+    filter: blur(2px);
+    z-index: 99;
+}
+
+/* Gradient Overlay for Depth */
+body.quantum-mode::before {
     content: "";
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: repeating-linear-gradient(
-        to bottom,
-        rgba(0, 0, 255, 0.3) 0%,
-        rgba(0, 0, 255, 0.3) 2px,
-        rgba(255, 255, 255, 0.3) 2px,
-        rgba(255, 255, 255, 0.3) 8px
-    );
-    animation: binary-flow 8s linear infinite;
-    z-index: 0;
-}
-
-/* Binary Background with Neon Effects */
-body.quantum-mode .binary-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 255, 0.3) 10%,
-        rgba(255, 255, 255, 0.3) 90%
-    );
-    animation: blue-white-binary-flow 10s linear infinite;
-}
-
-/* Binary Text Overlay - Updated */
-.binary-text {
-    position: absolute;
-    color: #00ff00;
-    font-size: 16px;
-    z-index: 3;
-    animation: fall 5s linear infinite;
-    opacity: 0.8;
-    /* 3D Transform */
-    transform: perspective(500px) rotateX(10deg);
-    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
-}
-
-/* Neon Glow Effect for Binary Text */
-.binary-text.neon {
-    text-shadow: 0 0 5px #00ccff, 0 0 10px #00ccff, 0 0 15px #0099cc;
-}
-
-/* Keyframes for Binary Flow */
-@keyframes binary-flow {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 0 100%;
-    }
-}
-
-@keyframes blue-white-binary-flow {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 0 200%;
-    }
-}
-
-/* Keyframes for Falling Binary */
-@keyframes fall {
-    0% { transform: translateY(0) rotateX(0deg); opacity: 0; }
-    50% { opacity: 1; }
-    100% { transform: translateY(100vh) rotateX(360deg); opacity: 0; }
-}
-
-/* Keyframes for Translating Binary Text Left */
-@keyframes translateLeft {
-    from { transform: translateX(100%); }
-    to { transform: translateX(-100%); }
-}
-
-/* Translated Binary Text Styling */
-.translated-binary-text {
-    position: absolute;
-    font-size: 16px;
-    z-index: 4;
-    color: #00ff00; /* Green */
-    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
-    white-space: nowrap;
-    animation: translateLeft 15s linear infinite;
-    transform: translateY(-50%) scaleX(-1); /* Flip vertically for reflection */
-    opacity: 0.8;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
+    z-index: 98;
 }
