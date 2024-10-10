@@ -1,22 +1,17 @@
 /* assets/css/binary.css */
 
 /* Quantum Computer Mode Styles - Enhanced */
-body.quantum-mode {
-    background-color: #000000;
-    overflow: hidden;
-    perspective: 1000px;
-}
 
-/* Binary Rain Container */
+/* Container for Binary Rain Effect */
 #binary-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none;
-    z-index: 999;
     overflow: hidden;
+    pointer-events: none; /* Allow clicks through the container */
+    z-index: 999; /* Ensure it's above other elements */
 }
 
 /* Binary Column Styles */
@@ -27,24 +22,24 @@ body.quantum-mode {
     display: flex;
     flex-direction: column;
     align-items: center;
+    animation: fall linear infinite;
+    opacity: 0.8;
 }
 
 /* Binary Text Styles */
 .binary-text {
-    color: #00ccff;
+    color: #00ccff; /* Neon Blue */
     font-family: 'Orbitron', 'Noto Sans', 'Arial Unicode MS', sans-serif;
-    font-size: 12px;
-    text-shadow: 0 0 5px #00ccff, 0 0 10px #00ccff, 0 0 15px #0099cc;
-    opacity: 0.8;
+    font-weight: bold;
+    text-shadow: 0 0 5px #00ccff, 0 0 10px #00ccff, 0 0 15px #00ccff;
     margin: 2px 0;
     transform: translateZ(0) scale(1);
-    animation: fall 5s linear infinite;
 }
 
-/* Matrix-style Binary Rain Animation */
+/* Animation for Falling Effect */
 @keyframes fall {
     0% {
-        transform: translateY(-100vh) scale(0.5);
+        transform: translateY(0) scale(0.5);
         opacity: 0;
     }
     10% {
@@ -59,29 +54,24 @@ body.quantum-mode {
     }
 }
 
-/* Reflective Floor Effect */
-body.quantum-mode::after {
-    content: "";
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    background: rgba(0, 0, 0, 0.7);
-    transform: scaleY(-1);
-    filter: blur(2px);
-    pointer-events: none;
-    z-index: 998;
-}
-
-/* Additional Styling for High-Tech Feel */
-body.quantum-mode #main-content {
-    display: none; /* Hide main content in Quantum Computer mode */
-}
-
 /* Responsive Adjustments */
 @media (max-width: 768px) {
+    .binary-column {
+        width: 15px;
+    }
+
     .binary-text {
-        font-size: 10px;
+        font-size: 12px;
     }
 }
+
+/* Enhanced Performance by Reducing Repaints */
+body.quantum-mode #binary-container {
+    will-change: transform;
+}
+
+/* Additional Styling for Depth and Perspective */
+body.quantum-mode .binary-column {
+    animation-duration: 5s; /* Duration of fall */
+}
+
