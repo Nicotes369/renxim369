@@ -2,64 +2,42 @@
 
 // Function to create binary rain effect
 function startBinaryEffect() {
-    const rainContainer = document.getElementById('quantum-binary-rain');
+    const binaryContainer = document.getElementById('binary-container') || document.createElement('div');
+    binaryContainer.id = 'binary-container';
+    document.body.appendChild(binaryContainer);
 
-    // Create multiple binary streams
-    for (let i = 0; i < 100; i++) {
-        const binaryStream = document.createElement('div');
-        binaryStream.classList.add('binary-stream');
-        binaryStream.style.left = `${Math.random() * 100}%`;
-        binaryStream.style.animationDuration = `${Math.random() * 3 + 2}s`;
-        binaryStream.style.animationDelay = `${Math.random() * 5}s`;
+    const createBinaryDrop = () => {
+        const binaryDrop = document.createElement('div');
+        binaryDrop.classList.add('binary-text');
+        binaryDrop.innerText = Math.random() < 0.5 ? '0' : '1';
+        binaryDrop.style.left = `${Math.random() * 100}%`;
+        binaryDrop.style.fontSize = `${Math.random() * 20 + 10}px`;
+        binaryDrop.style.animationDuration = `${Math.random() * 3 + 2}s`;
+        binaryDrop.style.opacity = `${Math.random() * 0.5 + 0.5}`;
+        binaryContainer.appendChild(binaryDrop);
 
-        // Generate a random binary string
-        const binaryLength = Math.floor(Math.random() * 50) + 10;
-        let binaryString = '';
-        for (let j = 0; j < binaryLength; j++) {
-            binaryString += Math.random() < 0.5 ? '0' : '1';
-        }
-        binaryStream.innerText = binaryString;
+        setTimeout(() => {
+            binaryDrop.remove();
+        }, (parseFloat(binaryDrop.style.animationDuration) * 1000));
+    };
 
-        rainContainer.appendChild(binaryStream);
-    }
-
-    // Create Quantum Text Overlay for qc.json
-    const quantumTextOverlay = document.createElement('div');
-    quantumTextOverlay.classList.add('quantum-text-overlay');
-    quantumTextOverlay.id = 'quantum-text-overlay';
-    quantumTextOverlay.innerText = translateToBinary(getTextFromQCJson());
-    rainContainer.appendChild(quantumTextOverlay);
+    const interval = setInterval(createBinaryDrop, 100);
+    window.binaryInterval = interval;
 }
 
 // Function to stop binary rain effect
 function stopBinaryEffect() {
-    const rainContainer = document.getElementById('quantum-binary-rain');
-    rainContainer.innerHTML = '';
-}
-
-// Helper function to get text from qc.json
-function getTextFromQCJson() {
-    // Assuming qc.json is loaded and stored in a global variable named qcData
-    // For security reasons, fetching local JSON files directly via fetch may not work without a server
-    // This function should be adjusted based on how qcData is loaded
-    if (typeof qcData !== 'undefined') {
-        let text = '';
-        for (const key in qcData) {
-            text += qcData[key] + ' ';
-        }
-        return text.trim();
+    const binaryContainer = document.getElementById('binary-container');
+    if (binaryContainer) {
+        binaryContainer.remove();
     }
-    return '';
+    if (window.binaryInterval) {
+        clearInterval(window.binaryInterval);
+        window.binaryInterval = null;
+    }
 }
 
-// Helper function to translate text to binary
-function translateToBinary(text) {
-    return text.split('').map(char => {
-        return char.charCodeAt(0).toString(2).padStart(8, '0');
-    }).join(' ');
-}
-
-// Start binary effect on quantum mode activation
+// Start binary effect when quantum mode is activated
 document.addEventListener('DOMContentLoaded', () => {
     if (document.body.classList.contains('quantum-mode')) {
         startBinaryEffect();
@@ -80,3 +58,13 @@ const observer = new MutationObserver((mutations) => {
 });
 
 observer.observe(document.body, { attributes: true });
+
+// Animation for binary rain
+const style = document.createElement('style');
+style.innerHTML = `
+    @keyframes fall {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(100vh); }
+    }
+`;
+document.head.appendChild(style);
