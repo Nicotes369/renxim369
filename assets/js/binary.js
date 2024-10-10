@@ -1,70 +1,72 @@
 // assets/js/binary.js
-// Function to create binary streams
-function startBinaryEffect() {
-    const binaryContainer = document.getElementById('binary-container') || document.createElement('div');
-    binaryContainer.id = 'binary-container';
-    document.body.appendChild(binaryContainer);
 
-    const createBinaryStream = () => {
+document.addEventListener('DOMContentLoaded', () => {
+    const binaryContainer = document.getElementById('binary-container');
+    const numColumns = Math.floor(window.innerWidth / 100); // 100px ごとに列を配置
+    const streams = [];
+
+    for (let i = 0; i < numColumns; i++) {
+        const column = document.createElement('div');
+        column.classList.add('binary-column');
+        column.style.left = `${(i * 100) + 50}px`; // 各列を中央に配置
+        binaryContainer.appendChild(column);
+
         const stream = document.createElement('div');
         stream.classList.add('binary-stream');
-        stream.style.left = `${Math.random() * 100}%`;
-        stream.style.animationDuration = `${Math.random() * 5 + 5}s`; // 5sから10sの間
-        stream.style.animationDelay = `${Math.random() * 5}s`;
+        const animationDuration = Math.random() * 5 + 5; // 5秒から10秒の間でランダム
+        stream.style.animationDuration = `${animationDuration}s`;
+        stream.style.animationDelay = `${Math.random() * 5}s`; // 遅延をランダム化
 
-        // 数字の縦並びを生成
-        const numberOfDigits = Math.floor(Math.random() * 20) + 10; // 10から30の間
-        for (let i = 0; i < numberOfDigits; i++) {
-            const binary = document.createElement('span');
-            binary.classList.add('binary-text');
-            binary.innerText = Math.random() < 0.5 ? '0' : '1';
-            binary.style.fontSize = `${Math.random() * 8 + 12}px`; // 12pxから20pxの間
-            stream.appendChild(binary);
+        // 文字列を縦に並べる
+        for (let j = 0; j < 50; j++) { // 50文字ずつ
+            const bit = document.createElement('span');
+            bit.textContent = Math.random() < 0.5 ? '0' : '1';
+            // サイズと透明度をランダム化
+            const fontSize = Math.random() * 12 + 12; // 12pxから24px
+            bit.style.fontSize = `${fontSize}px`;
+            bit.style.opacity = `${Math.random() * 0.5 + 0.5}`;
+            // 遠近感を表現するためのスケール
+            const scale = 1 + (fontSize - 12) / 24; // 1から1.5の間
+            bit.style.transform = `scale(${scale})`;
+            stream.appendChild(bit);
         }
 
-        binaryContainer.appendChild(stream);
-
-        // ストリームがアニメーション終了後に削除
-        setTimeout(() => {
-            stream.remove();
-        }, (parseFloat(stream.style.animationDuration) + parseFloat(stream.style.animationDelay)) * 1000);
-    };
-
-    // ストリームを一定間隔で生成
-    const streamInterval = setInterval(createBinaryStream, 500); // 0.5秒ごと
-    window.streamInterval = streamInterval;
-}
-
-// Function to stop binary streams
-function stopBinaryEffect() {
-    const binaryContainer = document.getElementById('binary-container');
-    if (binaryContainer) {
-        binaryContainer.remove();
+        column.appendChild(stream);
+        streams.push(stream);
     }
-    if (window.streamInterval) {
-        clearInterval(window.streamInterval);
-        window.streamInterval = null;
-    }
-}
 
-// Start binary effect when quantum mode is activated
-document.addEventListener('DOMContentLoaded', () => {
-    if (document.body.classList.contains('quantum-mode')) {
-        startBinaryEffect();
-    }
-});
+    // リサイズ時にバイナリ列を再生成
+    window.addEventListener('resize', () => {
+        // Clear existing streams
+        binaryContainer.innerHTML = '';
+        streams.length = 0;
 
-// Listen for changes in quantum mode
-const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-        if (mutation.attributeName === 'class') {
-            if (document.body.classList.contains('quantum-mode')) {
-                startBinaryEffect();
-            } else {
-                stopBinaryEffect();
+        const newNumColumns = Math.floor(window.innerWidth / 100);
+        for (let i = 0; i < newNumColumns; i++) {
+            const column = document.createElement('div');
+            column.classList.add('binary-column');
+            column.style.left = `${(i * 100) + 50}px`;
+            binaryContainer.appendChild(column);
+
+            const stream = document.createElement('div');
+            stream.classList.add('binary-stream');
+            const animationDuration = Math.random() * 5 + 5;
+            stream.style.animationDuration = `${animationDuration}s`;
+            stream.style.animationDelay = `${Math.random() * 5}s`;
+
+            for (let j = 0; j < 50; j++) {
+                const bit = document.createElement('span');
+                bit.textContent = Math.random() < 0.5 ? '0' : '1';
+                const fontSize = Math.random() * 12 + 12;
+                bit.style.fontSize = `${fontSize}px`;
+                bit.style.opacity = `${Math.random() * 0.5 + 0.5}`;
+                const scale = 1 + (fontSize - 12) / 24;
+                bit.style.transform = `scale(${scale})`;
+                stream.appendChild(bit);
             }
+
+            column.appendChild(stream);
+            streams.push(stream);
         }
     });
 });
-
-observer.observe(document.body, { attributes: true });
