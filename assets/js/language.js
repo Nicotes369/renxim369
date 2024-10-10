@@ -1,4 +1,5 @@
 // assets/js/language.js
+
 // Define RTL languages
 const rtlLanguages = ['ar', 'he'];
 
@@ -40,7 +41,7 @@ languageSelect.addEventListener('change', function() {
     const selectedLanguage = this.value;
     if (selectedLanguage === 'qc') {
         document.body.classList.add('quantum-mode');
-        // Dynamically load binary.css if not already loaded
+        // Load binary.css and binary.js
         if (!binaryCssLoaded) {
             const link = document.createElement('link');
             link.rel = 'stylesheet';
@@ -49,28 +50,12 @@ languageSelect.addEventListener('change', function() {
             document.head.appendChild(link);
             binaryCssLoaded = true;
         }
-        // Dynamically load binary.js if not already loaded
         if (!binaryJsLoaded) {
             const script = document.createElement('script');
             script.src = 'assets/js/binary.js';
             script.id = 'binary-js';
             document.body.appendChild(script);
             binaryJsLoaded = true;
-        }
-        // Hide all other content except binary-container and qc-content
-        document.getElementById('main-content').style.display = 'none';
-        if (!document.getElementById('qc-content')) {
-            const qcContent = document.createElement('div');
-            qcContent.id = 'qc-content';
-            qcContent.style.position = 'fixed';
-            qcContent.style.top = '0';
-            qcContent.style.left = '0';
-            qcContent.style.width = '100%';
-            qcContent.style.height = '100%';
-            qcContent.style.backgroundColor = '#000000';
-            qcContent.style.zIndex = '1000';
-            qcContent.style.pointerEvents = 'none';
-            document.body.appendChild(qcContent);
         }
     } else {
         document.body.classList.remove('quantum-mode');
@@ -94,16 +79,10 @@ languageSelect.addEventListener('change', function() {
                 window.stopBinaryEffect();
             }
         }
-        // Show main content
-        document.getElementById('main-content').style.display = 'block';
-        // Remove qc-content if exists
-        const qcContent = document.getElementById('qc-content');
-        if (qcContent) {
-            qcContent.remove();
-        }
-        // Load the selected language
-        loadLanguage(selectedLanguage);
     }
+    // Load the selected language
+    loadLanguage(selectedLanguage);
+    // Show Language Change Notification
     showLanguageChangeNotification(selectedLanguage);
 });
 
@@ -125,16 +104,22 @@ function showLanguageChangeNotification(lang) {
     notification.style.bottom = '20px';
     notification.style.right = '20px';
     notification.style.padding = '10px 20px';
-    notification.style.backgroundColor = 'rgba(4, 4, 140, 0.9)';
+    notification.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
     notification.style.color = '#ffffff';
     notification.style.borderRadius = '5px';
-    notification.style.boxShadow = '0px 0px 15px rgba(0, 0, 255, 0.7)';
+    notification.style.boxShadow = '0px 0px 10px rgba(0, 0, 0, 0.5)';
     notification.style.zIndex = '1000';
-    notification.style.fontFamily = "'Orbitron', sans-serif";
-    notification.style.fontSize = '16px';
-    notification.style.transition = 'opacity 0.5s ease-out';
+    notification.style.opacity = '0';
+    notification.style.transition = 'opacity 0.5s ease';
+
     document.body.appendChild(notification);
 
+    // Fade in
+    setTimeout(() => {
+        notification.style.opacity = '1';
+    }, 100);
+
+    // Fade out and remove
     setTimeout(() => {
         notification.style.opacity = '0';
         setTimeout(() => {
@@ -162,3 +147,14 @@ function getLanguageName(lang) {
     };
     return languages[lang] || lang;
 }
+
+/* Animation for notification */
+const style = document.createElement('style');
+style.innerHTML = `
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+`;
+document.head.appendChild(style);
