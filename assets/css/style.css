@@ -8,7 +8,7 @@ body {
     background-color: #04040c; /* Fallback color */
     color: #ffffff;
     direction: ltr; /* Default direction */
-    overflow: hidden; /* Prevent scrollbars in Quantum Mode */
+    /* overflow: hidden; Removed to allow scrolling in normal mode */
 }
 
 /* Enhanced Glow Effect for Catchphrase */
@@ -77,13 +77,6 @@ header {
     text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #0099cc;
 }
 
-.header-content p {
-    font-size: 24px;
-    margin-bottom: 30px;
-    text-align: center;
-    color: #ffffff;
-}
-
 /* Enhanced Catchphrase Glow */
 .enhanced-glow:hover {
     text-shadow: 0 0 30px #00ccff, 0 0 40px #00ccff, 0 0 50px #0099cc;
@@ -132,12 +125,6 @@ header {
 
 .contract-address button:hover {
     background-color: #63b8ff;
-}
-
-/* Glow effect for copied address */
-.contract-address.copied {
-    box-shadow: 0 0 10px #1e90ff, 0 0 20px #1e90ff, 0 0 30px #1e90ff;
-    transition: box-shadow 0.5s ease-in-out;
 }
 
 /* Confirmation Message Styling */
@@ -280,6 +267,7 @@ footer {
 body.quantum-mode {
     background-color: #000000;
     direction: ltr; /* Reset direction */
+    overflow: hidden; /* Prevent scrollbars only in Quantum Mode */
 }
 
 body.quantum-mode #main-content {
@@ -351,4 +339,12 @@ body.quantum-mode #language-select option {
     .binary-text {
         font-size: 10px;
     }
+}
+
+/* Notification Styles */
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(20px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(20px); }
 }
