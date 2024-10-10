@@ -1,5 +1,4 @@
 // assets/js/main.js
-
 // Copy Contract Address Function
 function copyAddress() {
     const address = document.getElementById('contract-address').innerText;
