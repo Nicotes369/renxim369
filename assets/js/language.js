@@ -58,6 +58,21 @@ languageSelect.addEventListener('change', function() {
             document.body.appendChild(script);
             binaryJsLoaded = true;
         }
+        // Hide all other content except binary-container and qc-content
+        document.getElementById('main-content').style.display = 'none';
+        if (!document.getElementById('qc-content')) {
+            const qcContent = document.createElement('div');
+            qcContent.id = 'qc-content';
+            qcContent.style.position = 'fixed';
+            qcContent.style.top = '0';
+            qcContent.style.left = '0';
+            qcContent.style.width = '100%';
+            qcContent.style.height = '100%';
+            qcContent.style.backgroundColor = '#000000';
+            qcContent.style.zIndex = '1000';
+            qcContent.style.pointerEvents = 'none';
+            document.body.appendChild(qcContent);
+        }
     } else {
         document.body.classList.remove('quantum-mode');
         // Remove binary.css
@@ -79,6 +94,13 @@ languageSelect.addEventListener('change', function() {
             if (typeof window.stopBinaryEffect === 'function') {
                 window.stopBinaryEffect();
             }
+        }
+        // Show main content
+        document.getElementById('main-content').style.display = 'block';
+        // Remove qc-content if exists
+        const qcContent = document.getElementById('qc-content');
+        if (qcContent) {
+            qcContent.remove();
         }
         // Load the selected language
         loadLanguage(selectedLanguage);
@@ -103,16 +125,22 @@ function showLanguageChangeNotification(lang) {
     notification.style.position = 'fixed';
     notification.style.bottom = '20px';
     notification.style.right = '20px';
-    notification.style.padding = '10px';
-    notification.style.backgroundColor = '#040488';
+    notification.style.padding = '10px 20px';
+    notification.style.backgroundColor = 'rgba(4, 4, 140, 0.9)';
     notification.style.color = '#ffffff';
     notification.style.borderRadius = '5px';
-    notification.style.boxShadow = '0px 0px 10px rgba(0, 0, 0, 0.5)';
+    notification.style.boxShadow = '0px 0px 15px rgba(0, 0, 255, 0.7)';
     notification.style.zIndex = '1000';
+    notification.style.fontFamily = "'Orbitron', sans-serif";
+    notification.style.fontSize = '16px';
+    notification.style.transition = 'opacity 0.5s ease-out';
     document.body.appendChild(notification);
 
     setTimeout(() => {
-        notification.remove();
+        notification.style.opacity = '0';
+        setTimeout(() => {
+            notification.remove();
+        }, 500);
     }, 2000);
 }
 
