@@ -1,75 +1,114 @@
 // assets/js/binary.js
 
-// Function to create and animate binary columns
-function createBinaryColumn(index, totalColumns) {
-    const binaryContainer = document.getElementById('binary-container');
-    const column = document.createElement('div');
-    column.classList.add('binary-column');
-    column.style.left = `${(index / totalColumns) * 100}%`;
-    column.style.animationDelay = `${Math.random() * 5}s`; // Randomize start time
-    column.style.animationDuration = `${Math.random() * 3 + 5}s`; // Randomize speed between 5-8s
+// Binary Rain Effect using Canvas for better performance
+(function() {
+    let canvas, ctx;
+    let columns;
+    let drops = [];
+    const fontSize = 16;
+    const binaryBits = ['0⟩', '1⟩'];
+    let animationId;
 
-    // Generate binary bits for the column
-    for (let i = 0; i < 30; i++) { // Adjust number of bits per column
-        const bit = document.createElement('div');
-        bit.classList.add('binary-text');
-        bit.innerText = Math.random() < 0.5 ? '0⟩' : '1⟩';
-        bit.style.fontSize = `${Math.random() * 8 + 12}px`; // Randomize font size between 12-20px
-        column.appendChild(bit);
+    // Initialize Canvas
+    function initializeCanvas() {
+        canvas = document.createElement('canvas');
+        canvas.id = 'binary-canvas';
+        document.body.appendChild(canvas);
+        ctx = canvas.getContext('2d');
+
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        initializeDrops();
+        animate();
     }
 
-    binaryContainer.appendChild(column);
-
-    // Remove column after animation completes to prevent overflow
-    column.addEventListener('animationend', () => {
-        column.remove();
-    });
-}
-
-// Initialize Binary Columns
-function initializeBinaryColumns() {
-    const binaryContainer = document.getElementById('binary-container');
-    const fontSize = 16; // Base font size
-    const totalColumns = Math.floor(window.innerWidth / (fontSize * 1.5));
-    
-    for (let i = 0; i < totalColumns; i++) {
-        setInterval(() => {
-            createBinaryColumn(i, totalColumns);
-        }, Math.random() * 2000); // Random interval between column creations
+    // Resize Canvas to Fullscreen
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        columns = Math.floor(canvas.width / fontSize);
+        drops = [];
+        for (let x = 0; x < columns; x++) {
+            drops[x] = Math.random() * canvas.height;
+        }
     }
-}
 
-// Start Binary Effect
-function startBinaryEffect() {
-    initializeBinaryColumns();
-}
-
-// Function to stop binary rain effect
-function stopBinaryEffect() {
-    const binaryContainer = document.getElementById('binary-container');
-    if (binaryContainer) {
-        binaryContainer.innerHTML = '';
+    // Initialize Drops
+    function initializeDrops() {
+        for (let x = 0; x < columns; x++) {
+            drops[x] = Math.random() * canvas.height;
+        }
     }
-}
 
-// Start binary effect when quantum mode is activated
-document.addEventListener('DOMContentLoaded', () => {
-    if (document.body.classList.contains('quantum-mode')) {
-        startBinaryEffect();
-    }
-});
+    // Draw Function
+    function draw() {
+        // Black background with opacity for trailing effect
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-// Listen for changes in quantum mode
-const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-        if (mutation.attributeName === 'class') {
-            if (document.body.classList.contains('quantum-mode')) {
-                startBinaryEffect();
-            } else {
-                stopBinaryEffect();
+        // Set neon blue color and font
+        ctx.fillStyle = '#00ccff';
+        ctx.font = `${fontSize}px 'Orbitron', sans-serif`;
+
+        // Draw binary bits
+        for (let i = 0; i < drops.length; i++) {
+            const bit = binaryBits[Math.floor(Math.random() * binaryBits.length)];
+            ctx.fillText(bit, i * fontSize, drops[i] * fontSize);
+
+            // Reset drop to top after it reaches the bottom
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
             }
+
+            drops[i]++;
+        }
+    }
+
+    // Animation Loop
+    function animate() {
+        draw();
+        animationId = requestAnimationFrame(animate);
+    }
+
+    // Start Binary Rain Effect
+    function startBinaryRain() {
+        if (!canvas) {
+            initializeCanvas();
+        }
+    }
+
+    // Stop Binary Rain Effect
+    function stopBinaryRain() {
+        if (animationId) {
+            cancelAnimationFrame(animationId);
+        }
+        if (canvas) {
+            canvas.remove();
+            canvas = null;
+            ctx = null;
+        }
+    }
+
+    // Listen for Quantum Computer mode activation/deactivation
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.attributeName === 'class') {
+                if (document.body.classList.contains('quantum-mode')) {
+                    startBinaryRain();
+                } else {
+                    stopBinaryRain();
+                }
+            }
+        });
+    });
+
+    observer.observe(document.body, { attributes: true });
+
+    // Initialize on page load if Quantum Computer mode is active
+    document.addEventListener('DOMContentLoaded', () => {
+        if (document.body.classList.contains('quantum-mode')) {
+            startBinaryRain();
         }
     });
-});
-
-observer.observe(document.body, { attributes: true });
+})();
