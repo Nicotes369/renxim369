@@ -2,36 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title data-i18n="catchphrase">Renxim (RXM) — The Coolest Quantum Meme in the QL1 Ecosystem</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Fonts -->
+    <title>Renxim (RXM) — The Coolest Quantum Meme on QL1 Ecosystem</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Social Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHq6LJYbMTyWz3df9I1D6YqX2/4v+bQnWV32D5mJ7N2Z+LJw6JkKfjX+FZdS59u6oR0E8Q6Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Main CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- Binary CSS -->
     <link rel="stylesheet" href="assets/css/binary.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Orbitron', 'Noto Sans', 'Arial Unicode MS', sans-serif;
+            background-color: #04040c;
+            color: #4285f4;
+        }
+        /* Additional Styles if needed */
+    </style>
 </head>
 <body>
-    <!-- Language Selector -->
+    <!-- Language Selection -->
     <div class="language-selector">
         <select id="language-select">
-            <option value="en">🇬🇧/🇺🇸 (English)</option>
-            <option value="ja">🇯🇵 (日本語)</option>
-            <option value="zh">🇨🇳 (中文)</option>
-            <option value="hi">🇮🇳 (हिंदी)</option>
-            <option value="fa">🇮🇷 (فارسی)</option>
-            <option value="ar">🇸🇦 (العربية)</option>
-            <option value="he">🇮🇱 (עברית)</option>
-            <option value="ru">🇷🇺 (Русский)</option>
-            <option value="de">🇩🇪 (Deutsch)</option>
-            <option value="it">🇮🇹 (Italiano)</option>
-            <option value="es">🇪🇸 (Español)</option>
-            <option value="ko">🇰🇷 (한국어)</option>
-            <option value="qc">💻 (Quantum Computer)</option>
+            <option value="en">🇬🇧/🇺🇸(English)</option>
+            <option value="ja">🇯🇵(日本語)</option>
+            <option value="zh">🇨🇳(中文)</option>
+            <option value="hi">🇮🇳(Hindi)</option>
+            <option value="fa">🇮🇷(Persian)</option>
+            <option value="ar">🇸🇦(Arabic)</option>
+            <option value="he">🇮🇱(Hebrew)</option>
+            <option value="ru">🇷🇺(Russian)</option>
+            <option value="de">🇩🇪(German)</option>
+            <option value="it">🇮🇹(Italian)</option>
+            <option value="es">🇪🇸(Spanish)</option>
+            <option value="ko">🇰🇷(Korean)</option>
+            <option value="qc">💻(Quantum Computer)</option>
         </select>
     </div>
+
+    <!-- Binary Rain Effect Container -->
+    <div id="binary-container"></div>
 
     <!-- Main Content -->
     <div id="main-content">
@@ -39,12 +45,12 @@
         <header>
             <div class="header-content">
                 <img src="assets/images/logo.png" alt="Renxim Logo" class="logo">
-                <h1 data-i18n="catchphrase">Renxim (RXM) — The Coolest Quantum Meme in the QL1 Ecosystem</h1>
-                <p data-i18n="welcome-message">As the observer, you determine the future of Renxim — let's collapse the wave function!</p>
+                <h1 data-i18n="catchphrase">Renxim (RXM) — The Coolest Quantum Meme on QL1 Ecosystem</h1>
+                <p data-i18n="welcome-message">"As an observer, you determine the future of Renxim — let's collapse the wave function!"</p>
                 <!-- Contract Address -->
                 <div class="contract-address">
-                    <span id="contract-address" data-i18n="contract-address">Contract Address: 0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4</span>
-                    <button onclick="copyAddress()" class="copy-icon">Copy Address</button>
+                    <span id="contract-address" data-i18n="contract-address" style="color: #ffffff; font-weight: bold;">Contract Address:0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4</span>
+                    <button onclick="copyAddress()" class="copy-icon" style="background-color: #1e90ff; color: #ffffff; border: none; border-radius: 5px; padding: 10px; margin-left: 10px; cursor: pointer;">Copy</button>
                 </div>
                 <!-- Social Icons -->
                 <div class="social-icons">
@@ -61,8 +67,8 @@
         <!-- About Section -->
         <section id="about">
             <h2 data-i18n="about-heading">About Renxim (RXM)</h2>
-            <p data-i18n="about-description">Renxim (RXM) is a cutting-edge meme coin developed by two experts, Ren and Xim, reflecting Quantum Physics and Quantum Theory. Operated by the community, it stands out as the coolest entity in the QL1 ecosystem.</p>
-            <blockquote data-i18n="about-quote">"Renxim exists like Schrödinger's cat, intertwined with the fine quantum vibrations and cosmic rhythms, representing infinite possibilities. Your participation as a new observer collapses this wave function, creating a new wave of radiant and abundant future reality."</blockquote>
+            <p data-i18n="about-description">Renxim (RXM) is a cutting-edge meme coin developed by two experts, Ren and Xim, inspired by Quantum Physics and Quantum Theory. Community-driven, it stands out as the coolest entity in the QL1 ecosystem.</p>
+            <blockquote data-i18n="about-quote">"Renxim exists like Schrödinger's cat, intertwined with subtle quantum vibrations and cosmic rhythms, representing infinite possibilities. Your participation as a new observer collapses this wave function, creating a new wave of a bright and prosperous future reality!"</blockquote>
         </section>
 
         <!-- Timeline Section -->
@@ -72,12 +78,12 @@
             <p data-i18n="timeline-question">Do you really think this is just a coincidence?</p>
             <ul>
                 <li><strong>March 17:</strong> Shiba Predator (QOM)</li>
-                <li><strong>April 17:</strong> A Hunter's Dream (CAW)</li>
+                <li><strong>April 17:</strong> A Hunters Dream (CAW)</li>
                 <li><strong>May 17:</strong> Childfood’s End (O)</li>
                 <li><strong>September 17:</strong> Renxim (RXM)</li>
             </ul>
             <!-- Timeline Infographic Image -->
-            <img src="assets/images/timeline-infographic.png" alt="Quantum Coincidence Timeline" class="timeline-image">
+            <img src="assets/images/timeline-infographic.png" alt="Quantum Coincidence Timeline">
         </section>
 
         <!-- Community Section -->
@@ -99,12 +105,12 @@
             <h2 data-i18n="faq-heading">FAQ</h2>
             <div class="faq-item">
                 <h3 data-i18n="faq-q1">Q1: How can I purchase Renxim (RXM)?</h3>
-                <p data-i18n="faq-a1">A1: In the quantum world, you as the observer create reality. This means that if you desire, Renxim (RXM) simultaneously exists on all major crypto exchanges. However, until the wave function collapses, possibilities are infinite. Currently, you can connect your wallet to QomSwap and purchase directly using the contract address above.</p>
-                <a href="https://www.qomswap.com/info/tokens/0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4?chainId=766" target="_blank" class="buy-button">Buy on QomSwap</a>
+                <p data-i18n="faq-a1">A1: In the quantum world, as an observer, you create reality. This means that if you wish, Renxim (RXM) exists simultaneously on all major crypto exchanges. However, until the wave function collapses, the possibilities are infinite. Currently, you can connect your wallet to QomSwap and purchase directly using the contract address above.</p>
+                <a href="https://www.qomswap.com/info/tokens/0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4?chainId=766" target="_blank" class="buy-button" data-i18n="buy-button">Buy on QomSwap</a>
             </div>
             <div class="faq-item">
                 <h3 data-i18n="faq-q2">Q2: When will RXM moon?</h3>
-                <p data-i18n="faq-a2">A2: From a quantum perspective, RXM already exists on the moon, Mars, and in other galaxies. It all depends on whether you observe and participate!</p>
+                <p data-i18n="faq-a2">A2: From a quantum perspective, RXM already exists on the moon, Mars, and other galaxies. It all depends on whether you observe and participate!</p>
             </div>
             <div class="faq-item">
                 <h3 data-i18n="faq-q3">Q3: Is investing in RXM safe?</h3>
@@ -129,12 +135,35 @@
         </footer>
     </div>
 
-    <!-- Quantum Binary Rain -->
-    <div id="quantum-binary-rain"></div>
-
     <!-- Scripts -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/binary.js"></script>
     <script src="assets/js/language.js"></script>
+    <script>
+        document.getElementById('language-select').addEventListener('change', function() {
+            if (this.value === 'qc') {
+                document.body.classList.add('quantum-mode');
+                initializeBinaryEffect(); // Ensure binary animation is initialized
+                document.querySelectorAll('.binary-text').forEach(element => {
+                    element.style.color = '#00ccff'; // Set binary text color to neon blue
+                });
+            } else {
+                document.body.classList.remove('quantum-mode');
+                document.querySelectorAll('.binary-text').forEach(element => {
+                    element.style.color = '#ffffff'; // Change binary text color to white
+                });
+            }
+        });
+    </script>
+    <script>
+        function copyAddress() {
+            const address = '0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4';
+            navigator.clipboard.writeText(address).then(() => {
+                alert('Contract Address Copied!');
+            }).catch(err => {
+                alert('Failed to copy the contract address');
+            });
+        }
+    </script>
 </body>
 </html>
