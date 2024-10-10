@@ -1,5 +1,4 @@
 // assets/js/language.js
-
 // Define RTL languages
 const rtlLanguages = ['ar', 'he'];
 
