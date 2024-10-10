@@ -10,7 +10,6 @@ let currentLanguage = 'en'; // Default language
 let binaryCssLoaded = false;
 let binaryJsLoaded = false;
 
-// Load Language Function
 function loadLanguage(lang) {
     fetch(`assets/languages/${lang}.json`)
         .then(response => response.json())
@@ -28,7 +27,6 @@ function loadLanguage(lang) {
         });
 }
 
-// Set Text Direction
 function setDirection(lang) {
     if (rtlLanguages.includes(lang)) {
         document.documentElement.setAttribute('dir', 'rtl');
@@ -39,7 +37,6 @@ function setDirection(lang) {
     }
 }
 
-// Handle Language Change
 languageSelect.addEventListener('change', function() {
     const selectedLanguage = this.value;
     if (selectedLanguage === 'qc') {
@@ -98,11 +95,20 @@ document.addEventListener('DOMContentLoaded', () => {
 function showLanguageChangeNotification(lang) {
     const notification = document.createElement('div');
     if (lang === 'qc') {
-        notification.innerText = `Quantum Computer mode activated`;
+        notification.innerText = `Quantum Computer Mode Activated`;
+        notification.style.color = '#00ccff';
     } else {
         notification.innerText = `Language changed to ${getLanguageName(lang)}`;
     }
-    notification.className = 'language-notification';
+    notification.style.position = 'fixed';
+    notification.style.bottom = '20px';
+    notification.style.right = '20px';
+    notification.style.padding = '10px';
+    notification.style.backgroundColor = '#040488';
+    notification.style.color = '#ffffff';
+    notification.style.borderRadius = '5px';
+    notification.style.boxShadow = '0px 0px 10px rgba(0, 0, 0, 0.5)';
+    notification.style.zIndex = '1000';
     document.body.appendChild(notification);
 
     setTimeout(() => {
@@ -112,20 +118,20 @@ function showLanguageChangeNotification(lang) {
 
 // Helper function to get language name
 function getLanguageName(lang) {
-    const languageNames = {
-        en: 'English',
-        ja: '日本語',
-        zh: '中文',
-        hi: 'हिंदी',
-        fa: 'فارسی',
-        ar: 'العربية',
-        he: 'עברית',
-        ru: 'Русский',
-        de: 'Deutsch',
-        it: 'Italiano',
-        es: 'Español',
-        ko: '한국어',
-        qc: 'Quantum Computer'
+    const languages = {
+        'en': 'English',
+        'ja': '日本語',
+        'zh': '中文',
+        'hi': 'Hindi',
+        'fa': 'Persian',
+        'ar': 'Arabic',
+        'he': 'Hebrew',
+        'ru': 'Russian',
+        'de': 'German',
+        'it': 'Italian',
+        'es': 'Spanish',
+        'ko': 'Korean',
+        'qc': 'Quantum Computer'
     };
-    return languageNames[lang] || lang;
+    return languages[lang] || lang;
 }
