@@ -13,6 +13,7 @@
             background-color: #04040c;
             color: #4285f4;
         }
+        /* Additional Styles if needed */
     </style>
 </head>
 <body>
@@ -48,7 +49,7 @@
                 <p data-i18n="welcome-message">"As an observer, you determine the future of Renxim — let's collapse the wave function!"</p>
                 <!-- Contract Address -->
                 <div class="contract-address">
-                    <span>Contract Address:</span>
+                    <span data-i18n="contract-label">Contract Address:</span>
                     <span id="contract-address">0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4</span>
                     <button onclick="copyAddress()">Copy</button>
                 </div>
@@ -139,5 +140,16 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/binary.js"></script>
     <script src="assets/js/language.js"></script>
+    <script>
+        document.getElementById('language-select').addEventListener('change', function() {
+            if (this.value === 'qc') {
+                document.body.classList.add('quantum-mode');
+                initializeBinaryEffect(); // Ensure binary animation is initialized
+            } else {
+                document.body.classList.remove('quantum-mode');
+                // Additional handling if needed
+            }
+        });
+    </script>
 </body>
 </html>
