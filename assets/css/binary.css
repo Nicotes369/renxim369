@@ -1,117 +1,100 @@
 /* assets/css/binary.css */
 
-/* Quantum Computer Mode Styles - Enhanced */
+/* Quantum Computer Mode Styles */
 body.quantum-mode {
     background-color: #000000;
-    color: #ffffff;
+    color: #00ff00;
+    direction: rtl;
     overflow: hidden;
-    perspective: 1000px;
-    direction: ltr;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-/* Binary Rain Container */
-.binary-rain {
+body.quantum-mode #main-content {
+    display: none;
+}
+
+body.quantum-mode .language-selector {
+    color: #00bfff;
+}
+
+body.quantum-mode #language-select {
+    background-color: #000000;
+    color: #00bfff;
+    border: 1px solid #00bfff;
+}
+
+#quantum-binary-rain {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 100;
     pointer-events: none;
+    z-index: 1;
     overflow: hidden;
+    perspective: 1000px;
 }
 
-/* Binary Stream */
-.binary-rain .binary-stream {
+/* Binary Rain Animation */
+.binary-stream {
     position: absolute;
-    top: -200px;
-    width: 1px;
-    height: 200vh;
-    background: transparent;
-    animation: rain 10s linear infinite;
-}
-
-/* Binary Text */
-.binary-rain .binary-stream span {
-    display: block;
-    color: #00ffff;
+    top: -100px;
+    color: #00bfff;
     font-family: 'Orbitron', sans-serif;
-    font-size: 14px;
-    line-height: 1.5;
     white-space: nowrap;
-    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ccff;
-    opacity: 0.7;
-    transform: rotateX(45deg) translateZ(100px);
+    user-select: none;
+    animation: binary-fall linear infinite;
+    text-shadow: 0 0 5px #00bfff, 0 0 10px #00bfff, 0 0 15px #0099cc;
+    transform: translateZ(0) rotateY(0deg) scale(1);
 }
 
-/* QC Text Rain Container */
-.qc-text-rain {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 101;
-    pointer-events: none;
-    overflow: hidden;
-}
-
-/* QC Stream */
-.qc-text-rain .qc-stream {
+/* Quantum Text Overlay */
+.quantum-text-overlay {
     position: absolute;
-    top: -200px;
-    width: 1px;
-    height: 200vh;
-    background: transparent;
-    animation: qc-rain 15s linear infinite;
-}
-
-/* QC Text */
-.qc-text-rain .qc-stream span {
-    display: block;
+    top: 50%;
+    left: 100%;
     color: #00ff00;
-    font-family: 'Courier New', monospace;
-    font-size: 16px;
-    line-height: 1.5;
+    font-family: 'Orbitron', sans-serif;
     white-space: nowrap;
-    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00cc00;
-    opacity: 0.8;
-    transform: rotateX(45deg) translateZ(100px);
+    user-select: none;
+    animation: quantum-text-slide linear infinite;
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
 }
 
-/* Animations */
-@keyframes rain {
-    0% { transform: translateY(-200px); }
-    100% { transform: translateY(100vh); }
+/* Keyframes for Binary Rain */
+@keyframes binary-fall {
+    0% {
+        transform: translateY(0) rotateY(0deg) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotateY(360deg) scale(0.5);
+        opacity: 0;
+    }
 }
 
-@keyframes qc-rain {
-    0% { transform: translateY(-200px); }
-    100% { transform: translateY(100vh); }
+/* Keyframes for Quantum Text Slide */
+@keyframes quantum-text-slide {
+    0% {
+        transform: translateX(0) rotateY(0deg) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-100vw) rotateY(-360deg) scale(0.5);
+        opacity: 0;
+    }
 }
 
 /* Reflective Floor Effect */
-body.quantum-mode::after {
+#quantum-binary-rain::after {
     content: "";
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 200px;
-    background: rgba(0, 0, 0, 0.5);
-    transform: scaleY(-1);
-    filter: blur(2px);
-    z-index: 99;
-}
-
-/* Gradient Overlay for Depth */
-body.quantum-mode::before {
-    content: "";
-    position: fixed;
-    top: 0;
+    position: absolute;
+    top: 100%;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
-    z-index: 98;
+    background: inherit;
+    transform: scaleY(-1);
+    filter: blur(2px);
+    opacity: 0.5;
 }
