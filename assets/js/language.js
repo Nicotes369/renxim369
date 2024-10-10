@@ -77,6 +77,7 @@ languageSelect.addEventListener('change', function() {
                 script.remove();
                 binaryJsLoaded = false;
             }
+            
             // Stop the binary effect if it's running
             if (typeof window.stopBinaryEffect === 'function') {
                 window.stopBinaryEffect();
