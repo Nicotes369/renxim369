@@ -1,8 +1,10 @@
+/* assets/css/binary.css */
+
 /* Quantum Computer Mode Styles - Enhanced */
 body.quantum-mode {
     background-color: #000000;
     overflow: hidden;
-    perspective: 2000px; /* 増加した透視効果 */
+    perspective: 1000px;
 }
 
 /* Binary Rain Container */
@@ -17,72 +19,37 @@ body.quantum-mode {
     overflow: hidden;
 }
 
+/* Binary Column Styles */
+.binary-column {
+    position: absolute;
+    top: -100px;
+    width: 100px; /* Adjust as needed */
+    left: 0;
+    transform: translateX(-50%);
+}
+
 /* Binary Stream Styles */
 .binary-stream {
-    position: absolute;
-    top: -100px; /* スタート位置を上に設定 */
-    width: 20px; /* ストリームの幅 */
     display: flex;
     flex-direction: column;
     align-items: center;
-    opacity: 0.7;
-    animation: stream-fall linear infinite;
+    animation: flow linear infinite;
 }
 
-/* Binary Text Styles */
-.binary-text {
+.binary-stream span {
     color: #00ccff;
     font-family: 'Orbitron', 'Noto Sans', 'Arial Unicode MS', sans-serif;
-    text-shadow: 0 0 5px #00ccff, 0 0 10px #00ccff, 0 0 20px #0099cc;
-    transform: translateZ(0);
+    font-weight: bold;
+    opacity: 0.7;
+    text-shadow: 0 0 5px #00ccff, 0 0 10px #00ccff, 0 0 15px #0099cc;
 }
 
-/* Stream Animation */
-@keyframes stream-fall {
+/* Keyframes for binary stream flow */
+@keyframes flow {
     0% {
-        transform: translateY(0) rotateX(0deg);
-        opacity: 0.7;
-    }
-    50% {
-        opacity: 1;
+        transform: translateY(-100%);
     }
     100% {
-        transform: translateY(100vh) rotateX(90deg);
-        opacity: 0.7;
-    }
-}
-
-
-/* Reflective Floor Effect */
-body.quantum-mode::after {
-    content: "";
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    background: rgba(0, 0, 0, 0.7);
-    transform: scaleY(-1);
-    filter: blur(2px);
-    pointer-events: none;
-    z-index: 998;
-}
-
-/* Additional Styling for High-Tech Feel */
-body.quantum-mode #main-content {
-    display: none; /* Quantum Computerモードではメインコンテンツを非表示 */
-}
-
-body.quantum-mode #qc-content {
-    position: relative;
-    z-index: 1000;
-    width: 100%;
-    height: 100%;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .binary-text {
-        font-size: 12px;
+        transform: translateY(100vh);
     }
 }
