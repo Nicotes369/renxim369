@@ -134,6 +134,12 @@ header {
     background-color: #63b8ff;
 }
 
+/* Glow effect for copied address */
+.contract-address.copied {
+    box-shadow: 0 0 10px #1e90ff, 0 0 20px #1e90ff, 0 0 30px #1e90ff;
+    transition: box-shadow 0.5s ease-in-out;
+}
+
 /* Confirmation Message Styling */
 .copy-confirmation {
     color: #ffdd57; /* Yellow color matching 'about-quote' */
