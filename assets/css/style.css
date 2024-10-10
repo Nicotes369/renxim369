@@ -4,9 +4,8 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Orbitron', 'Noto Sans', 'Arial', sans-serif;
-    background: url('../images/background.gif') no-repeat center center fixed;
-    background-size: cover;
+    font-family: 'Orbitron', 'Noto Sans', 'Arial Unicode MS', sans-serif;
+    background-color: #04040c;
     color: #ffffff;
     direction: ltr; /* Default direction */
 }
@@ -56,18 +55,15 @@ header {
     font-size: 48px;
     margin-bottom: 20px;
     text-align: center;
-    /* Neon Glow Effect */
-    color: #00ccff;
-    text-shadow: 0 0 5px #00ccff, 0 0 10px #00ccff, 0 0 15px #0099cc;
+    color: #00ccff; /* Maintain glow color */
+    text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #0099cc;
 }
 
 .header-content p {
     font-size: 24px;
     margin-bottom: 30px;
     text-align: center;
-    /* Neon Glow Effect */
     color: #ffffff;
-    text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #cccccc;
 }
 
 /* Contract Address Styles - Improved */
@@ -83,8 +79,20 @@ header {
     color: #ffffff;
 }
 
-.contract-address span {
+.contract-address span:first-child {
     margin-right: 10px;
+    font-weight: bold;
+}
+
+.contract-address span#contract-address {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: box-shadow 0.5s;
+}
+
+.contract-address span#contract-address:hover {
+    box-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #00ccff;
 }
 
 .contract-address button {
@@ -133,6 +141,8 @@ section h2 {
     font-size: 36px;
     margin-bottom: 30px;
     text-align: center;
+    color: #00ccff;
+    text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #0099cc;
 }
 
 section p, section ul {
@@ -140,6 +150,7 @@ section p, section ul {
     line-height: 1.6;
     max-width: 800px;
     margin: 0 auto 20px auto;
+    color: #ffffff;
 }
 
 blockquote {
@@ -149,6 +160,7 @@ blockquote {
     margin: 40px auto;
     max-width: 800px;
     color: #ffdd57;
+    text-shadow: 0 0 10px #ffdd57, 0 0 20px #ffdd57, 0 0 30px #ffdd57;
 }
 
 /* FAQ Styles */
@@ -159,12 +171,16 @@ blockquote {
 .faq-item h3 {
     font-size: 24px;
     margin-bottom: 10px;
+    color: #00ccff;
+    text-shadow: 0 0 5px #00ccff;
 }
 
 .faq-item p {
     font-size: 18px;
+    color: #ffffff;
 }
 
+/* Buy Button */
 .buy-button {
     display: inline-block;
     padding: 15px 30px;
@@ -206,21 +222,52 @@ footer {
 .final-message {
     font-size: 16px;
     margin-top: 20px;
+    color: #ffffff;
+}
+
+/* Glow effect for copied address */
+.contract-address.copied {
+    animation: glow 0.5s forwards;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 10px #1e90ff;
+    }
+    to {
+        box-shadow: 0 0 20px #1e90ff, 0 0 30px #1e90ff, 0 0 40px #1e90ff;
+    }
+}
+
+/* Confirmation message styling */
+.copy-confirmation {
+    color: #00ff00;
+    margin-left: 10px;
+    font-weight: bold;
+    animation: fadeOut 2s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 
 /* Quantum Computer Mode Styles */
 body.quantum-mode {
     background-color: #000000;
-    overflow: hidden;
     direction: ltr; /* Reset direction */
 }
 
 body.quantum-mode #main-content {
-    display: none; /* Hide main content */
+    display: none; /* Hide main content in Quantum Computer mode */
 }
 
 body.quantum-mode .language-selector {
-    color: #00ccff;
+    color: #040488;
 }
 
 body.quantum-mode #language-select {
@@ -248,12 +295,11 @@ body.quantum-mode #language-select {
     justify-content: center;
 }
 
-[dir="rtl"] .contract-address span {
+[dir="rtl"] .contract-address span:first-child {
     margin-right: 10px;
     margin-left: 0;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
     .header-content h1 {
         font-size: 32px;
@@ -268,5 +314,5 @@ body.quantum-mode #language-select {
         height: 30px;
     }
 
-    /* Additional responsive adjustments if needed */
+    /* Additional Responsive Adjustments */
 }
