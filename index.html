@@ -12,8 +12,13 @@
             font-family: 'Orbitron', 'Noto Sans', 'Arial Unicode MS', sans-serif;
             background-color: #04040c;
             color: #4285f4;
+            transition: background-color 0.5s ease;
         }
-        /* Additional Styles if needed */
+        /* Quantum Computerモード時の背景色を完全黒に設定 */
+        body.quantum-mode {
+            background-color: #000000;
+        }
+        /* その他のスタイルはstyle.cssに含まれる */
     </style>
 </head>
 <body>
@@ -39,6 +44,11 @@
     <!-- Binary Rain Effect Container -->
     <div id="binary-container"></div>
 
+    <!-- Quantum Computer Mode Content (Hidden by default) -->
+    <div id="qc-content" style="display: none;">
+        <!-- ここにQuantum Computerモード専用のコンテンツが入ります -->
+    </div>
+
     <!-- Main Content -->
     <div id="main-content">
         <!-- Header Section -->
@@ -46,11 +56,14 @@
             <div class="header-content">
                 <img src="assets/images/logo.png" alt="Renxim Logo" class="logo">
                 <h1 data-i18n="catchphrase">Renxim (RXM) — The Coolest Quantum Meme on QL1 Ecosystem</h1>
-                <p data-i18n="welcome-message">"As an observer, you determine the future of Renxim — let's collapse the wave function!"</p>
-                <!-- Contract Address -->
-                <div class="contract-address">
-                    <span id="contract-address" data-i18n="contract-address" style="color: #ffffff; font-weight: bold;">Contract Address:0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4</span>
-                    <button onclick="copyAddress()" class="copy-icon" style="background-color: #1e90ff; color: #ffffff; border: none; border-radius: 5px; padding: 10px; margin-left: 10px; cursor: pointer;">Copy</button>
+                <p data-i18n="welcome-message">As an observer, you determine the future of Renxim — let's collapse the wave function!</p>
+                <!-- Contract Address Section -->
+                <div class="contract-section">
+                    <span class="contract-label" data-i18n="contract-address-label">Contract Address:</span>
+                    <div class="contract-box">
+                        <span id="contract-address" data-i18n="contract-address">0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4</span>
+                    </div>
+                    <button onclick="copyAddress()" class="copy-button">Copy</button>
                 </div>
                 <!-- Social Icons -->
                 <div class="social-icons">
@@ -140,30 +153,95 @@
     <script src="assets/js/binary.js"></script>
     <script src="assets/js/language.js"></script>
     <script>
-        document.getElementById('language-select').addEventListener('change', function() {
-            if (this.value === 'qc') {
-                document.body.classList.add('quantum-mode');
-                initializeBinaryEffect(); // Ensure binary animation is initialized
-                document.querySelectorAll('.binary-text').forEach(element => {
-                    element.style.color = '#00ccff'; // Set binary text color to neon blue
-                });
-            } else {
-                document.body.classList.remove('quantum-mode');
-                document.querySelectorAll('.binary-text').forEach(element => {
-                    element.style.color = '#ffffff'; // Change binary text color to white
-                });
-            }
-        });
-    </script>
-    <script>
+        // Copy Address Functionality
         function copyAddress() {
-            const address = '0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4';
+            const address = document.getElementById('contract-address').innerText;
             navigator.clipboard.writeText(address).then(() => {
-                alert('Contract Address Copied!');
+                const contractBox = document.querySelector('.contract-box');
+                contractBox.classList.add('copied');
+                // Create and show the copy confirmation message
+                const message = document.createElement('span');
+                message.classList.add('copy-message');
+                message.innerText = 'コピーが完了しました';
+                contractBox.appendChild(message);
+                // Remove the message after 2 seconds
+                setTimeout(() => {
+                    message.remove();
+                }, 2000);
             }).catch(err => {
                 alert('Failed to copy the contract address');
             });
         }
     </script>
+    <style>
+        /* Contract Address Styles */
+        .contract-section {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .contract-label {
+            color: #00ccff;
+            font-weight: bold;
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .contract-box {
+            background-color: #1e1e1e;
+            padding: 10px 20px;
+            border-radius: 5px;
+            position: relative;
+            transition: box-shadow 0.5s ease;
+            color: #ffffff;
+            font-size: 18px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        /* Neon Glow on Copy */
+        .contract-box.copied {
+            box-shadow: 0 0 20px #00ccff, 0 0 40px #00ccff, 0 0 60px #00ccff;
+        }
+
+        /* Copy Button Styles */
+        .copy-button {
+            background-color: #00ccff;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            margin-left: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 16px;
+        }
+
+        .copy-button:hover {
+            background-color: #0099cc;
+            transform: scale(1.05);
+        }
+
+        /* Copy Confirmation Message */
+        .copy-message {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 204, 255, 0.9);
+            color: #ffffff;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 14px;
+            animation: fadeInOut 2s forwards;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+            10% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            90% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+        }
+    </style>
 </body>
 </html>
