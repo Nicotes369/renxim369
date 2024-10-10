@@ -1,100 +1,77 @@
-/* assets/css/binary.css */
-
-/* Quantum Computer Mode Styles */
+/* Quantum Computer Mode Styles - Enhanced */
 body.quantum-mode {
     background-color: #000000;
-    color: #00ff00;
-    direction: rtl;
     overflow: hidden;
-    transition: background-color 0.5s ease, color 0.5s ease;
+    perspective: 1000px;
 }
 
-body.quantum-mode #main-content {
-    display: none;
-}
-
-body.quantum-mode .language-selector {
-    color: #00bfff;
-}
-
-body.quantum-mode #language-select {
-    background-color: #000000;
-    color: #00bfff;
-    border: 1px solid #00bfff;
-}
-
-#quantum-binary-rain {
+/* Binary Rain Container */
+#binary-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     pointer-events: none;
-    z-index: 1;
+    z-index: 999;
     overflow: hidden;
-    perspective: 1000px;
 }
 
-/* Binary Rain Animation */
-.binary-stream {
+/* Binary Text Styles */
+.binary-text {
     position: absolute;
-    top: -100px;
-    color: #00bfff;
-    font-family: 'Orbitron', sans-serif;
-    white-space: nowrap;
-    user-select: none;
-    animation: binary-fall linear infinite;
-    text-shadow: 0 0 5px #00bfff, 0 0 10px #00bfff, 0 0 15px #0099cc;
-    transform: translateZ(0) rotateY(0deg) scale(1);
+    top: 0;
+    color: #00ccff;
+    font-family: 'Orbitron', 'Noto Sans', 'Arial Unicode MS', sans-serif;
+    font-size: 20px;
+    text-shadow: 0 0 5px #00ccff, 0 0 10px #00ccff, 0 0 15px #0099cc;
+    opacity: 0.8;
+    transform: rotateX(45deg);
+    animation: fall 5s linear infinite;
 }
 
-/* Quantum Text Overlay */
-.quantum-text-overlay {
-    position: absolute;
-    top: 50%;
-    left: 100%;
-    color: #00ff00;
-    font-family: 'Orbitron', sans-serif;
-    white-space: nowrap;
-    user-select: none;
-    animation: quantum-text-slide linear infinite;
-    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #00ff00;
-}
-
-/* Keyframes for Binary Rain */
-@keyframes binary-fall {
+/* Matrix-style Binary Rain Animation */
+@keyframes fall {
     0% {
-        transform: translateY(0) rotateY(0deg) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(100vh) rotateY(360deg) scale(0.5);
+        transform: translateY(-100%) rotateX(45deg);
         opacity: 0;
     }
-}
-
-/* Keyframes for Quantum Text Slide */
-@keyframes quantum-text-slide {
-    0% {
-        transform: translateX(0) rotateY(0deg) scale(1);
-        opacity: 1;
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
     }
     100% {
-        transform: translateX(-100vw) rotateY(-360deg) scale(0.5);
+        transform: translateY(100vh) rotateX(45deg);
         opacity: 0;
     }
 }
 
 /* Reflective Floor Effect */
-#quantum-binary-rain::after {
+body.quantum-mode::after {
     content: "";
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    bottom: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: inherit;
+    height: 50%;
+    background: rgba(0, 0, 0, 0.7);
     transform: scaleY(-1);
     filter: blur(2px);
-    opacity: 0.5;
+    pointer-events: none;
+    z-index: 998;
+}
+
+/* Additional Styling for High-Tech Feel */
+body.quantum-mode #main-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .binary-text {
+        font-size: 14px;
+    }
 }
