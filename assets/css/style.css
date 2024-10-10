@@ -2,15 +2,53 @@
 
 /* General Styles */
 body {
+    margin: 0;
+    padding: 0;
     font-family: 'Orbitron', 'Noto Sans', 'Arial Unicode MS', sans-serif;
     background-color: #04040c;
-    color: #4285f4;
-    transition: background-color 0.5s ease, color 0.5s ease;
+    color: #ffffff;
+    direction: ltr; /* Default direction */
 }
 
+#main-content {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Language Selector */
+.language-selector {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+}
+
+#language-select {
+    padding: 8px 12px;
+    font-size: 16px;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#language-select:hover {
+    background-color: #e0e0e0;
+}
+
+/* Header Styles */
 header {
-    text-align: center;
-    padding: 50px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .logo {
@@ -18,161 +56,338 @@ header {
     margin-bottom: 20px;
 }
 
-h1 {
+.header-content h1 {
     font-size: 48px;
-    margin-bottom: 10px;
-    color: #00ccff;
-    text-shadow: 0 0 10px #00ccff, 0 0 20px #0099cc;
-}
-
-p {
-    font-size: 18px;
-    color: #ffffff;
-    max-width: 800px;
-    margin: 0 auto 20px auto;
-}
-
-section {
-    padding: 60px 20px;
-}
-
-h2 {
-    font-size: 36px;
-    color: #00ccff;
-    text-align: center;
     margin-bottom: 20px;
-    text-shadow: 0 0 10px #00ccff, 0 0 20px #0099cc;
-}
-
-blockquote {
-    font-style: italic;
-    color: #00ccff;
     text-align: center;
-    margin: 20px auto;
-    max-width: 700px;
-    text-shadow: 0 0 10px #00ccff, 0 0 20px #0099cc;
+    color: #00ccff; /* ネオンブルーに変更 */
+    text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-    max-width: 600px;
-    margin: 20px auto;
-}
-
-ul li {
-    background-color: #1e1e1e;
-    margin: 10px 0;
-    padding: 15px 20px;
-    border-radius: 5px;
+.header-content p {
+    font-size: 24px;
+    margin-bottom: 30px;
+    text-align: center;
     color: #ffffff;
-    font-size: 18px;
-    box-shadow: 0 0 10px rgba(0, 204, 255, 0.3);
+    text-shadow: 0 0 5px #ffffff;
 }
 
+/* Contract Address Styles - Improved */
+.contract-address-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.contract-label {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-shadow: 0 0 5px #ffffff;
+}
+
+.contract-box {
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px #00ccff;
+    transition: box-shadow 0.3s;
+}
+
+.contract-box:hover {
+    box-shadow: 0 0 30px #00ccff;
+}
+
+.contract-box span {
+    font-size: 18px;
+    margin-right: 15px;
+    color: #ffffff;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.contract-box span:hover {
+    color: #00ccff;
+}
+
+.copy-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #1e90ff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.copy-button:hover {
+    background-color: #63b8ff;
+    box-shadow: 0 0 10px #63b8ff;
+}
+
+.copy-button:active {
+    background-color: #1c86ee;
+    box-shadow: 0 0 5px #1c86ee;
+}
+
+/* Social Icons */
 .social-icons {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
 
-.social-icon-link {
-    color: #00ccff;
-    font-size: 24px;
+.social-icons a {
+    color: #ffffff;
     margin: 0 10px;
-    transition: color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    font-size: 2rem;
+    transition: color 0.3s, transform 0.3s;
 }
 
-.social-icon-link:hover {
-    color: #0099cc;
+.social-icons a:hover {
+    color: #00ccff;
     transform: scale(1.2);
+}
+
+/* Section Styles */
+section {
+    padding: 60px 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #000000;
+}
+
+section h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #00ccff;
+    text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff;
+}
+
+section p, section ul {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    color: #ffffff;
+    text-shadow: 0 0 5px #ffffff;
+}
+
+section ul {
+    list-style: none;
+    padding: 0;
+}
+
+section ul li {
+    background: url('assets/images/checkmark.png') no-repeat left center;
+    background-size: 20px 20px;
+    padding-left: 30px;
+    margin-bottom: 10px;
+}
+
+blockquote {
+    font-size: 24px;
+    font-style: italic;
+    text-align: center;
+    margin: 40px auto;
+    max-width: 800px;
+    color: #ffdd57;
+    text-shadow: 0 0 10px #ffdd57, 0 0 20px #ffd700;
+}
+
+/* FAQ Styles */
+.faq-item {
+    margin-bottom: 40px;
+}
+
+.faq-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #00ccff;
+    text-shadow: 0 0 5px #00ccff;
+}
+
+.faq-item p {
+    font-size: 18px;
+    color: #ffffff;
+    text-shadow: 0 0 3px #ffffff;
 }
 
 .buy-button {
     display: inline-block;
-    background-color: #00ccff;
+    padding: 15px 30px;
+    background-color: #1e90ff;
     color: #ffffff;
-    padding: 10px 20px;
-    border-radius: 5px;
     text-decoration: none;
-    font-size: 16px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 0 10px rgba(0, 204, 255, 0.5);
+    font-size: 18px;
+    margin-top: 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .buy-button:hover {
-    background-color: #0099cc;
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(0, 153, 204, 0.7);
+    background-color: #63b8ff;
+    box-shadow: 0 0 10px #63b8ff;
+}
+
+.buy-button:active {
+    background-color: #1c86ee;
+    box-shadow: 0 0 5px #1c86ee;
 }
 
 /* Footer Styles */
 footer {
-    background-color: #1e1e1e;
-    color: #ffffff;
-    padding: 30px 20px;
     text-align: center;
+    padding: 40px 20px;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-top: 2px solid #040488;
+    color: #ffffff;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .footer-content {
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-.disclaimer, .final-message {
+.footer-content p {
+    margin: 10px 0;
     font-size: 14px;
-    margin-top: 10px;
-    color: #cccccc;
+    color: #888888;
+}
+
+.disclaimer {
+    font-size: 14px;
+    color: #888888;
+}
+
+.final-message {
+    font-size: 16px;
+    margin-top: 20px;
+    color: #ffffff;
     text-shadow: 0 0 5px #ffffff;
 }
 
-/* Responsive Styles */
+/* Quantum Computer Mode Styles */
+body.quantum-mode {
+    background-color: #000000;
+    color: #ffffff;
+    direction: ltr; /* Reset direction */
+}
+
+body.quantum-mode #main-content {
+    display: none;
+}
+
+body.quantum-mode #binary-container {
+    display: block;
+}
+
+body.quantum-mode .language-selector {
+    color: #00ccff;
+}
+
+body.quantum-mode #language-select {
+    background-color: #000000;
+    color: #00ccff;
+    border: 1px solid #00ccff;
+}
+
+body.quantum-mode .language-selector select {
+    color: #00ccff;
+    background-color: #000000;
+}
+
+/* RTL Styles */
+[dir="rtl"] .language-selector {
+    right: auto;
+    left: 10px;
+}
+
+[dir="rtl"] header {
+    text-align: center;
+}
+
+[dir="rtl"] .contract-address-wrapper {
+    justify-content: center;
+    text-align: center;
+}
+
+[dir="rtl"] .contract-box {
+    flex-direction: column;
+}
+
+[dir="rtl"] .contract-box span {
+    margin-right: 0;
+    margin-bottom: 10px;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-    h1 {
+    .header-content h1 {
         font-size: 32px;
     }
 
-    h2 {
+    .header-content p {
+        font-size: 18px;
+    }
+
+    .social-icons a {
+        font-size: 1.5rem;
+    }
+
+    .contract-box {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contract-box span {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .copy-button {
+        width: 100%;
+        padding: 10px;
+    }
+
+    section h2 {
         font-size: 28px;
     }
 
-    .logo {
-        width: 100px;
+    section p, section ul {
+        font-size: 16px;
     }
 
-    ul li {
+    blockquote {
+        font-size: 20px;
+    }
+
+    .faq-item h3 {
+        font-size: 20px;
+    }
+
+    .faq-item p {
         font-size: 16px;
     }
 
     .buy-button {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
+
+    .footer-content p {
+        font-size: 12px;
+    }
+
+    .final-message {
         font-size: 14px;
-        padding: 8px 16px;
     }
 }
-/* Additional Quantum Computer Mode Styles */
-
-/* Quantum Bits Stream Container */
-.binary-stream {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Binary Text Styles */
-.binary-text {
-    color: #00ccff;
-    font-family: 'Orbitron', 'Noto Sans', 'Arial Unicode MS', sans-serif;
-    text-shadow: 0 0 5px #00ccff, 0 0 10px #00ccff, 0 0 20px #0099cc;
-    margin: 2px 0;
-    opacity: 0.8;
-    transform: translateZ(0);
-    transition: transform 0.3s ease;
-}
-
-/* Hover Effect for Binary Text (Optional) */
-.binary-text:hover {
-    transform: scale(1.2);
-    color: #ffffff;
-    text-shadow: 0 0 10px #ffffff, 0 0 20px #00ccff, 0 0 30px #0099cc;
-}
-
