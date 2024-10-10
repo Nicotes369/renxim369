@@ -1,13 +1,6 @@
 /* assets/css/binary.css */
 
-/* Quantum Computer Mode Styles - Enhanced */
-body.quantum-mode {
-    background-color: #000000;
-    overflow: hidden;
-    perspective: 1000px;
-}
-
-/* Binary Rain Container */
+/* Binary Rain Effect */
 #binary-container {
     position: fixed;
     top: 0;
@@ -19,37 +12,57 @@ body.quantum-mode {
     overflow: hidden;
 }
 
-/* Binary Column Styles */
 .binary-column {
     position: absolute;
     top: -100px;
-    width: 100px; /* Adjust as needed */
-    left: 0;
-    transform: translateX(-50%);
+    width: 20px; /* Adjust based on font size */
+    animation: binary-fall linear infinite;
 }
 
-/* Binary Stream Styles */
-.binary-stream {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    animation: flow linear infinite;
-}
-
-.binary-stream span {
+.binary-column span {
+    display: block;
     color: #00ccff;
-    font-family: 'Orbitron', 'Noto Sans', 'Arial Unicode MS', sans-serif;
-    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    white-space: nowrap;
     opacity: 0.7;
     text-shadow: 0 0 5px #00ccff, 0 0 10px #00ccff, 0 0 15px #0099cc;
 }
 
-/* Keyframes for binary stream flow */
-@keyframes flow {
+/* Keyframes for Binary Fall */
+@keyframes binary-fall {
     0% {
         transform: translateY(-100%);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
     }
     100% {
         transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+/* Perspective for 3D Effect */
+#binary-container {
+    perspective: 1000px;
+}
+
+.binary-column {
+    transform-origin: top center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .binary-column {
+        width: 10px;
+    }
+
+    .binary-column span {
+        font-size: 12px;
     }
 }
