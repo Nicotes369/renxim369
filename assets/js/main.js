@@ -1,90 +1,68 @@
 // assets/js/main.js
 
-// Copy Contract Address Function with Enhanced Error Handling
+// Function to copy contract address to clipboard
 function copyAddress() {
     const addressElement = document.getElementById('contract-address');
-    if (!addressElement) {
-        console.error('Contract address element not found.');
-        return;
-    }
-    const address = addressElement.innerText.split(': ')[1];
-    if (!address) {
-        console.error('Contract address not found.');
-        return;
-    }
-    navigator.clipboard.writeText(address).then(() => {
+    const addressText = addressElement.innerText.split(': ')[1];
+    navigator.clipboard.writeText(addressText).then(() => {
         showCopyNotification();
     }).catch(err => {
-        showCopyErrorNotification();
+        alert('Failed to copy address.');
         console.error('Error copying text: ', err);
     });
 }
 
-// Show Copy Notification
+// Function to show copy notification
 function showCopyNotification() {
     const notification = document.createElement('div');
     notification.innerText = 'Address Copied!';
-    notification.className = 'notification';
+    notification.classList.add('copy-notification');
     document.body.appendChild(notification);
 
-    setTimeout(() => {
-        notification.remove();
-    }, 2000);
-}
+    // Style the notification
+    notification.style.position = 'fixed';
+    notification.style.bottom = '20px';
+    notification.style.right = '20px';
+    notification.style.padding = '10px 20px';
+    notification.style.backgroundColor = '#040488';
+    notification.style.color = '#ffffff';
+    notification.style.borderRadius = '5px';
+    notification.style.boxShadow = '0px 0px 10px rgba(0, 0, 0, 0.5)';
+    notification.style.zIndex = '1000';
+    notification.style.fontFamily = 'Orbitron, sans-serif';
+    notification.style.fontSize = '16px';
+    notification.style.opacity = '1';
+    notification.style.transition = 'opacity 0.5s ease-in-out';
 
-// Show Copy Error Notification
-function showCopyErrorNotification() {
-    const notification = document.createElement('div');
-    notification.innerText = 'Failed to copy the contract address.';
-    notification.className = 'notification error';
-    document.body.appendChild(notification);
-
+    // Fade out and remove the notification
     setTimeout(() => {
-        notification.remove();
+        notification.style.opacity = '0';
+        setTimeout(() => {
+            notification.remove();
+        }, 500);
     }, 2000);
 }
 
 // Event listener for social icons hover effect
-const socialIcons = document.querySelectorAll('.social-icon-link');
-socialIcons.forEach(icon => {
-    icon.addEventListener('mouseenter', () => {
-        icon.style.transform = 'scale(1.1)';
+document.addEventListener('DOMContentLoaded', () => {
+    const socialIcons = document.querySelectorAll('.social-icon-link');
+    socialIcons.forEach(icon => {
+        icon.addEventListener('mouseenter', () => {
+            icon.style.transform = 'scale(1.2)';
+            icon.style.transition = 'transform 0.3s ease';
+        });
+        icon.addEventListener('mouseleave', () => {
+            icon.style.transform = 'scale(1)';
+            icon.style.transition = 'transform 0.3s ease';
+        });
     });
-    icon.addEventListener('mouseleave', () => {
-        icon.style.transform = 'scale(1)';
+
+    // Responsive Navigation Fix
+    window.addEventListener('resize', function() {
+        if (window.innerWidth <= 768) {
+            document.querySelector('.language-selector').style.fontSize = '14px';
+        } else {
+            document.querySelector('.language-selector').style.fontSize = '16px';
+        }
     });
-});
-
-// Responsive Navigation Fix with Debounce
-function debounce(func, wait) {
-    let timeout;
-    return function(...args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, args), wait);
-    };
-}
-
-window.addEventListener('resize', debounce(function() {
-    const languageSelector = document.querySelector('.language-selector');
-    if (window.innerWidth <= 768) {
-        languageSelector.style.fontSize = '14px';
-    } else {
-        languageSelector.style.fontSize = '16px';
-    }
-}, 200));
-
-// Keyboard Navigation Support
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Tab') {
-        // Ensure focus is visible
-        document.body.classList.add('user-is-tabbing');
-    }
-});
-
-// Ensure all interactive elements are focusable
-const interactiveElements = document.querySelectorAll('button, [href], select, input, textarea, [tabindex]:not([tabindex="-1"])');
-interactiveElements.forEach(el => {
-    if (!el.hasAttribute('tabindex')) {
-        el.setAttribute('tabindex', '0');
-    }
 });
