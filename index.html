@@ -13,8 +13,6 @@
             background-color: #04040c;
             color: #4285f4;
         }
-        
-        /* Additional Styles if needed */
     </style>
 </head>
 <body>
@@ -141,16 +139,5 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/binary.js"></script>
     <script src="assets/js/language.js"></script>
-    <script>
-        document.getElementById('language-select').addEventListener('change', function() {
-            if (this.value === 'qc') {
-                document.body.classList.add('quantum-mode');
-                initializeBinaryEffect(); // Ensure binary animation is initialized
-            } else {
-                document.body.classList.remove('quantum-mode');
-                // Change binary text color back to default if needed
-            }
-        });
-    </script>
 </body>
 </html>
