@@ -8,12 +8,7 @@
     <link rel="stylesheet" href="assets/css/binary.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
-        body {
-            font-family: 'Orbitron', 'Noto Sans', 'Arial Unicode MS', sans-serif;
-            background-color: #04040c;
-            color: #4285f4;
-        }
-        /* Additional Styles if needed */
+        /* 追加のスタイルが必要な場合はここに記述 */
     </style>
 </head>
 <body>
@@ -49,7 +44,7 @@
                 <p data-i18n="welcome-message">"As an observer, you determine the future of Renxim — let's collapse the wave function!"</p>
                 <!-- Contract Address -->
                 <div class="contract-address">
-                    <span data-i18n="contract-label">Contract Address:</span>
+                    <span>Contract Address:</span>
                     <span id="contract-address">0xfE7Aa1F52633b0812bCAAa3fab4A4e2D3182Dbc4</span>
                     <button onclick="copyAddress()">Copy</button>
                 </div>
@@ -144,10 +139,21 @@
         document.getElementById('language-select').addEventListener('change', function() {
             if (this.value === 'qc') {
                 document.body.classList.add('quantum-mode');
-                initializeBinaryEffect(); // Ensure binary animation is initialized
+                // Initialize Binary Effect
+                if (typeof initializeBinaryEffect === 'function') {
+                    initializeBinaryEffect();
+                }
             } else {
                 document.body.classList.remove('quantum-mode');
-                // Additional handling if needed
+            }
+        });
+    </script>
+    <script>
+        // Enhance catchphrase with additional glow effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const catchphrase = document.querySelector('h1[data-i18n="catchphrase"]');
+            if (catchphrase) {
+                catchphrase.classList.add('enhanced-glow');
             }
         });
     </script>
