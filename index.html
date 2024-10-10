@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/binary.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <style>
-        /* 追加のスタイルが必要な場合はここに記述 */
-    </style>
 </head>
 <body>
     <!-- Language Selection -->
@@ -40,7 +37,7 @@
         <header>
             <div class="header-content">
                 <img src="assets/images/logo.png" alt="Renxim Logo" class="logo">
-                <h1 data-i18n="catchphrase">Renxim (RXM) — The Coolest Quantum Meme on QL1 Ecosystem</h1>
+                <h1 data-i18n="catchphrase" class="enhanced-glow">Renxim (RXM) — The Coolest Quantum Meme on QL1 Ecosystem</h1>
                 <p data-i18n="welcome-message">"As an observer, you determine the future of Renxim — let's collapse the wave function!"</p>
                 <!-- Contract Address -->
                 <div class="contract-address">
@@ -135,19 +132,6 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/binary.js"></script>
     <script src="assets/js/language.js"></script>
-    <script>
-        document.getElementById('language-select').addEventListener('change', function() {
-            if (this.value === 'qc') {
-                document.body.classList.add('quantum-mode');
-                // Initialize Binary Effect
-                if (typeof initializeBinaryEffect === 'function') {
-                    initializeBinaryEffect();
-                }
-            } else {
-                document.body.classList.remove('quantum-mode');
-            }
-        });
-    </script>
     <script>
         // Enhance catchphrase with additional glow effect
         document.addEventListener('DOMContentLoaded', () => {
