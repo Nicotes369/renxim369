@@ -1,5 +1,4 @@
 // assets/js/language.js
-
 // Define RTL languages
 const rtlLanguages = ['ar', 'he'];
 
@@ -95,7 +94,6 @@ languageSelect.addEventListener('change', function() {
                 window.stopBinaryEffect();
             }
         }
-        
         // Show main content
         document.getElementById('main-content').style.display = 'block';
         // Remove qc-content if exists
