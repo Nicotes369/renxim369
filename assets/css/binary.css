@@ -22,7 +22,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    animation: fall linear infinite;
+    animation: fall 10s linear infinite; /* Increased duration for a more dynamic effect */
     opacity: 0.8;
 }
 
@@ -54,6 +54,21 @@
     }
 }
 
+/* Adding White Neon Effect to Some Columns */
+@keyframes neonWhitePulse {
+    0%, 100% {
+        text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff, 0 0 30px #ffffff;
+    }
+    50% {
+        text-shadow: 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff;
+    }
+}
+
+.white-neon-binary-text {
+    color: #ffffff; /* White Neon */
+    animation: neonWhitePulse 2s infinite alternate;
+}
+
 /* Responsive Adjustments */
 @media (max-width: 768px) {
     .binary-column {
@@ -72,6 +87,5 @@ body.quantum-mode #binary-container {
 
 /* Additional Styling for Depth and Perspective */
 body.quantum-mode .binary-column {
-    animation-duration: 5s; /* Duration of fall */
+    animation-duration: 8s; /* Duration of fall adjusted for Quantum mode */
 }
-
